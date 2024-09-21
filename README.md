@@ -9,7 +9,7 @@
     ```
 
     ```sh
-    cd PDV-PontoFlex
+    cd PDV-PontoFlex/App
     ```
 
 2. Defina as permissões para tmp e logs
@@ -21,11 +21,19 @@
 3. Faça build do container Docker
 
     ```sh
-    cd App
-    ```
-
-    ```sh
     docker compose up -d --build
     ```
+
+4. Acesse o container do app
+
+	```sh
+	docker exec -it pontoflex-dev-1 sh
+	```
+
+5. Instale as dependências
+
+	```sh
+	cd app && composer install -n
+	```
 
 4. Se tudo ocorreu bem, o projeto pode ser acessado em http://localhost:8084/
