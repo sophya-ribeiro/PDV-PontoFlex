@@ -1,0 +1,42 @@
+body,
+html {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    background:
+        linear-gradient(90deg, rgba(0, 50, 20, 0.9) 0%, rgba(32,170,87,0.6) 100%),
+        url(../assets/images/background-login.jpg) no-repeat;
+    background-size: 1500px;
+}
+
+
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+section {
+    width: 20%;
+}
+
+form {
+    width: 80%;
+}
