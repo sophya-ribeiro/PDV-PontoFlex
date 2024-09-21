@@ -5,7 +5,6 @@ services:
     image: webdevops/php-apache-dev:8.3
     volumes:
       - ".:/app:consistent"
-      - "./docker/php.ini:/usr/local/etc/php/php.ini"
     ports:
       - 8084:80
     links:

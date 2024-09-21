@@ -134,6 +134,13 @@ return [
             'serialize' => true,
             'duration' => '+1 years',
         ],
+        '_cake_core_' => [
+            'className' => 'File',
+            'prefix' => 'myapp_cake_core_',
+            'path' => CACHE . 'persistent/',
+            'serialize' => true,
+            'duration' => '+2 minutes',
+        ],
     ],
 
     /*
