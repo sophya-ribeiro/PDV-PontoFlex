@@ -93,6 +93,13 @@ body {
 	font-style: normal;
 }
 
+/* QUICKSAND */
+
+@font-face {
+	font-family: "Quicksand";
+	src: url("/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype");
+}
+
 /* ROBOTO */
 
 @font-face {

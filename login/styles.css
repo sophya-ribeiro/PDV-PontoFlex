@@ -14,29 +14,87 @@ body {
 
 .background {
     background:
-        linear-gradient(90deg, rgba(0, 50, 20, 0.9) 0%, rgba(32,170,87,0.6) 100%),
+        linear-gradient(90deg, rgba(0, 50, 20, 0.9) 0%, rgba(32,170,87,0.9) 100%),
         url(../assets/images/background-login.jpg) no-repeat;
     background-size: 1500px;
 }
 
 
 main {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    align-items: center;
+    padding-left: 8rem;
+    padding-right: 8rem;
 }
 
-div {
+.main-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-section {
-    width: 20%;
+.secao-slogan{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.slogan-texto{
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Quicksand", sans-serif;
+}
+
+.icon-people {
+    font-size: 50px;
+}
+
+.slogan-span{
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    padding-top: 2rem;
+}
+
+.ancora-suporte{
+    color: #e7e7e7;
+    font-size: 13px;
+    font-weight: 200;
+    padding-top: 2rem;
 }
 
 form {
-    width: 80%;
+    width: 70%;
+    background-color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.login-titulo{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.login-texto{
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.texto-botao{
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.btn{
+    width: 100% !important;
+    background-color: #20AA57 !important;
 }
