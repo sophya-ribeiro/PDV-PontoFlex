@@ -1,0 +1,37 @@
+name: pontoflex
+
+services:
+  dev:
+    image: webdevops/php-apache-dev:8.3
+    volumes:
+      - ".:/app:consistent"
+      - "./docker/php.ini:/usr/local/etc/php/php.ini"
+    ports:
+      - 8084:80
+    links:
+      - mysql
+    networks:
+      - pontoflex-network
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: pontoflex
+      MYSQL_USER: pontoflex
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - persistent:/var/lib/mysql
+      - ./docker/mysql-init:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - pontoflex-network
+
+networks:
+  pontoflex-network:
+    driver: "bridge"
+
+volumes:
+  persistent:

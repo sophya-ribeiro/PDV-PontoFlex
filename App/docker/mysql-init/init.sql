@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS pontoflex;
+GRANT ALL PRIVILEGES ON pontoflex.* TO 'pontoflex'@'%' IDENTIFIED BY 'password';
+FLUSH PRIVILEGES;
