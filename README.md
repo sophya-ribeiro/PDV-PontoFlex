@@ -26,14 +26,26 @@
 
 4. Acesse o container do app
 
-	```sh
-	docker exec -it pontoflex-dev-1 sh
-	```
+    ```sh
+    docker exec -it pontoflex-dev-1 bash
+    ```
 
 5. Instale as dependências
 
-	```sh
-	cd app && composer install -n
-	```
+    ```sh
+    cd app && composer install -n
+    ```
 
-4. Se tudo ocorreu bem, o projeto pode ser acessado em http://localhost:8084/
+6. Execute as migrations do banco de dados
+
+    ```sh
+    bin/cake migrations migrate
+    ```
+
+7. Popule as tabelas necessárias no banco de dados
+
+    ```sh
+    bin/cake migrations seed
+    ```
+
+8. Se tudo ocorreu bem, o projeto pode ser acessado em http://localhost:8084/

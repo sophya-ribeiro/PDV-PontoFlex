@@ -53,3 +53,4 @@ nbproject/*
 .env
 /tmp
 /logs
+schema-dump-default.lock
