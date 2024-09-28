@@ -36,16 +36,22 @@
     cd app && composer install -n
     ```
 
-6. Execute as migrations do banco de dados
+6. Altere as permissões de `bin`
+
+    ```sh
+    chmod 777 bin/*
+    ```
+
+7. Execute as migrations do banco de dados
 
     ```sh
     bin/cake migrations migrate
     ```
 
-7. Popule as tabelas necessárias no banco de dados
+8. Popule as tabelas necessárias no banco de dados
 
     ```sh
     bin/cake migrations seed
     ```
 
-8. Se tudo ocorreu bem, o projeto pode ser acessado em http://localhost:8084/
+9. Se tudo ocorreu bem, o projeto pode ser acessado em  http://localhost:8084/
