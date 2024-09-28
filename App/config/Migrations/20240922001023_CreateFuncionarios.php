@@ -45,6 +45,16 @@ class CreateFuncionarios extends AbstractMigration
             'null' => false,
         ]);
 
+        $table->addColumn('papel_id', 'integer')
+            ->addForeignKey(
+                'papel_id',
+                'papeis',
+                'id',
+                [
+                    'delete' => 'CASCADE',
+                    'update' => 'CASCADE'
+                ]
+            );
 
         $table->create();
     }
