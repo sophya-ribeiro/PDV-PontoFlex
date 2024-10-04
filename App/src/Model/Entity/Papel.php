@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -25,4 +26,8 @@ class Papel extends Entity
     protected array $_accessible = [
         'nome' => true,
     ];
+
+    public const GERENTE = 1;
+    public const ESTOQUISTA = 2;
+    public const OPERADOR_CAIXA = 3;
 }
