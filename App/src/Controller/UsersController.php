@@ -22,7 +22,7 @@ class UsersController extends AppController
         parent::initialize();
     }
 
-    public function beforeFilter(\Cake\Event\EventInterface $event)
+    public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
 
