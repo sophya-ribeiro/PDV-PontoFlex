@@ -55,7 +55,7 @@ class CreateProdutos extends AbstractMigration
                 ->addForeignKey(
                     'categoria_id',
                     'categoria',
-                    'categoria_id',
+                    'id',
                     [
                         'delete' => 'CASCADE',
                         'update' => 'CASCADE'
