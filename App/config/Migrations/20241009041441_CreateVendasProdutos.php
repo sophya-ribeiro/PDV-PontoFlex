@@ -17,12 +17,12 @@ class CreateVendasProdutos extends AbstractMigration
         $table = $this->table('vendas_produtos');
 
         $table->addColumn('valor_venda', 'decimal', [
-            'precision' => 100,
+            'precision' => 10,
             'scale' => 2
         ]);
 
         $table->addColumn('desconto', 'decimal', [
-            'precision' => 100,
+            'precision' => 10,
             'default' => 0,
             'null' => true,
             'scale' => 2

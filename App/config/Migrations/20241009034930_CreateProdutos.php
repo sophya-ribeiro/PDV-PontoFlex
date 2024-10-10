@@ -27,14 +27,14 @@ class CreateProdutos extends AbstractMigration
         ]);
 
         $table->addColumn('preco_unitario', 'decimal', [
-            'precision' => 100,
+            'precision' => 10,
             'scale' => 2,
             'default' => 0,
             'null' => false
         ]);
 
         $table->addColumn('descricao', 'string', [
-            'defaul' => null,
+            'default' => null,
             'limit' => 355,
             'null' => false
         ]);
