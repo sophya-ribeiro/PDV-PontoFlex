@@ -24,7 +24,7 @@ class CreateVendasProdutos extends AbstractMigration
         $table->addColumn('desconto', 'decimal', [
             'precision' => 100,
             'default' => 0,
-            'null' => true
+            'null' => true,
             'scale' => 2
         ]);
 
@@ -35,14 +35,14 @@ class CreateVendasProdutos extends AbstractMigration
         ]);
 
         $table->addColumn('n_unidades', 'integer', [
-            'default' = 0,
-            'null' = true
+            'default' => 0,
+            'null' => true
         ]);
 
         $table->addColumn('produto_id', 'integer')->addForeignKey(
             'produto_id',
             'produtos',
-            'produto_id',
+            'id',
             [
                 'delete' => 'CASCADE',
                 'update' => 'CASCADE'
