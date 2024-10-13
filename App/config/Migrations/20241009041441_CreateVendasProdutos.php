@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Migrations\AbstractMigration;
@@ -34,7 +35,7 @@ class CreateVendasProdutos extends AbstractMigration
             'null' => false
         ]);
 
-        $table->addColumn('n_unidades', 'integer', [
+        $table->addColumn('numero_unidades', 'integer', [
             'default' => 0,
             'null' => true
         ]);

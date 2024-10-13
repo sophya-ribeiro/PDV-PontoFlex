@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Migrations\AbstractMigration;
@@ -16,7 +17,7 @@ class CreateProdutos extends AbstractMigration
     {
         $table = $this->table('produtos');
 
-        $table->addColumn('quant_estoque', 'integer', [
+        $table->addColumn('quantidade_estoque', 'integer', [
             'default' => 0,
             'null' => true
         ]);
@@ -45,22 +46,22 @@ class CreateProdutos extends AbstractMigration
             'null' => false
         ]);
 
-        $table->addColumn('cod_produto', 'string', [
+        $table->addColumn('codigo_produto', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false
         ]);
 
         $table->addColumn('categoria_id', 'integer')
-                ->addForeignKey(
-                    'categoria_id',
-                    'categoria',
-                    'id',
-                    [
-                        'delete' => 'CASCADE',
-                        'update' => 'CASCADE'
-                    ]
-        );
+            ->addForeignKey(
+                'categoria_id',
+                'categoria',
+                'id',
+                [
+                    'delete' => 'CASCADE',
+                    'update' => 'CASCADE'
+                ]
+            );
 
         $table->create();
     }
