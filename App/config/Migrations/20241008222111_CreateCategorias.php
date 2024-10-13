@@ -15,7 +15,7 @@ class CreateCategoria extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('categoria');
+        $table = $this->table('categorias');
 
         $table->addColumn('nome', 'string', [
             'default' => null,
@@ -30,8 +30,5 @@ class CreateCategoria extends AbstractMigration
         ]);
 
         $table->create();
-
-
-
     }
 }
