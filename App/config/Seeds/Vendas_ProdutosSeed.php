@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Model\Entity\Venda;
-use App\Model\Entity\Produto;
 use Migrations\AbstractSeed;
 
 
@@ -36,8 +34,8 @@ class Vendas_ProdutosSeed extends AbstractSeed
                 'desconto' => 2,
                 'operador_caixa' => 'Maria',
                 'n_unidades' => 3,
-                'produto_id' => Produto::PRODUTO1,
-                'vendas_id' => Venda::1
+                'produto_id' => 1,
+                'vendas_id' => 1
             ],
             [
                 'id' => 2,
@@ -45,10 +43,11 @@ class Vendas_ProdutosSeed extends AbstractSeed
                 'desconto' => 0.5,
                 'operador_caixa' => 'Sophya',
                 'n_unidades' => 6,
-                'produto_id' => Produto::PRODUTO2,
-                'vendas_id' => Venda::2
+                'produto_id' => 2,
+                'vendas_id' => 2
             ]
-        ]
+        ];
+
         $table = $this->table('vendas_produtos');
         $table->insert($data)->save();
     }

@@ -34,7 +34,7 @@ class CaixasSeed extends AbstractSeed
                 'inst_abertura' => '2024-09-12 10:00:00[.000]',
                 'inst_fechamento' => '2024-09-12 17:00:00[.000]',
                 'oper_caixa' => 'Maria',
-                'venda_id' => Venda::1
+                'venda_id' => 1
             ]
         ];
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Model\Entity\Categoria;
+
 use Migrations\AbstractSeed;
 
 class ProdutosSeed extends AbstractSeed
@@ -21,11 +21,11 @@ class ProdutosSeed extends AbstractSeed
      * More information on writing seeders is available here:
      * https://book.cakephp.org/phinx/0/en/seeding.html
      
-    * @return void
-    */
-    public function run() : void
+     * @return void
+     */
+    public function run(): void
     {
-        $data =[
+        $data = [
             [
                 'id' => 1,
                 'quant_estoque' => 10,
@@ -34,7 +34,7 @@ class ProdutosSeed extends AbstractSeed
                 'descricao' => 'Produto 1',
                 'nome_produto' => 'produto1',
                 'cod_produto' => 'Sl1Ba',
-                'categoria_id' => Categoria::CATEGORIA1
+                'categoria_id' => 1
             ],
 
             [
@@ -45,24 +45,22 @@ class ProdutosSeed extends AbstractSeed
                 'descricao' => 'Produto 2',
                 'nome_produto' => 'produto2',
                 'cod_produto' => '4r56s',
-                'categoria_id' => Categoria::CATEGORIA2
+                'categoria_id' => 2
             ],
 
             [
                 'id' => 3,
-                'quant_estoque' => 5, 
+                'quant_estoque' => 5,
                 'data_reposicao' => '2024-06-06',
                 'preco_unitario' => 50,
                 'descricao' => 'Produto 3',
                 'nome_produto' => 'produto3',
                 'cod_produto' => 'sda79',
-                'categoria_id' => Categoria::CATEGORIA3
-            ]            
+                'categoria_id' => 3
+            ]
         ];
 
         $table = $this->table('produtos');
         $table->insert($data)->save();
-         
-
     }
 }
