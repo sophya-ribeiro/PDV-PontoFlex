@@ -14,6 +14,7 @@ class AdminSeed extends AbstractSeed
     {
         return [
             'PapeisSeed',
+            'FuncionariosSeed'
         ];
     }
 
@@ -31,6 +32,7 @@ class AdminSeed extends AbstractSeed
     {
         $data = [
             [
+                'cpf' =>  '11122233344',
                 'nome_completo' => 'Gerente Admin',
                 'data_nascimento' => '2000-01-01',
                 'data_contratacao' => '2024-01-01',

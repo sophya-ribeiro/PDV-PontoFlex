@@ -15,7 +15,13 @@ class CreateFuncionarios extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('funcionarios');
+        $table = $this->table('funcionarios', ['id' => false, 'primary_key' => ['cpf']]);
+
+        $table->addColumn('cpf', 'string', [
+            'default' => null,
+            'limit' => 11,
+            'null' => false,
+        ]);
 
         $table->addColumn('nome_completo', 'string', [
             'default' => null,
@@ -37,7 +43,8 @@ class CreateFuncionarios extends AbstractMigration
             'default' => null,
             'limit' => 255,
             'null' => false,
-        ]);
+        ])
+            ->addIndex('nome_usuario', ['unique' => true]);
 
         $table->addColumn('senha', 'string', [
             'default' => null,
