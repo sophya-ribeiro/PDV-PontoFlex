@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Migrations\AbstractMigration;
@@ -16,32 +17,37 @@ class CreateVendas extends AbstractMigration
     {
         $table = $this->table('vendas');
 
-        $table->addColumn('formato_pagamento', 'string',[
+        $table->addColumn('forma_pagamento', 'string', [
             'default' => null,
             'limit' => 100,
             'null' => false
         ]);
 
-        $table->addColumn('data_venda', 'date',[
+        $table->addColumn('quantidade_parcelas', 'integer', [
+            'default' => 1,
+            'null' => false
+        ]);
+
+        $table->addColumn('data_venda', 'date', [
             'default' => null,
             'null' => false
         ]);
 
-        $table->addColumn('valor_total', 'decimal',[
+        $table->addColumn('valor_total', 'decimal', [
             'precision' => 10,
             'default' => 0,
             'null' => false,
             'scale' => 2
         ]);
 
-        $table->addColumn('desconto_total', 'decimal',[
+        $table->addColumn('desconto_total', 'decimal', [
             'precision' => 10,
             'default' => 0,
             'null' => true,
             'scale' => 2
         ]);
 
-        
+
         $table->create();
     }
 }
