@@ -31,9 +31,9 @@ class CaixasSeed extends AbstractSeed
             [
                 'id' => 1,
                 'fundo_troco' => 50.0,
-                'inst_abertura' => '2024-09-12 10:00:00[.000]',
-                'inst_fechamento' => '2024-09-12 17:00:00[.000]',
-                'oper_caixa' => 'Maria',
+                'instante_abertura' => '2024-09-12 10:00:00',
+                'instante_fechamento' => '2024-09-12 17:00:00',
+                'operador_funcionario_id' => 2,
                 'venda_id' => 1
             ]
         ];

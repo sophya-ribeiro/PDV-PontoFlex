@@ -24,20 +24,26 @@ class CreateCaixas extends AbstractMigration
             'scale' => 2
         ]);
 
-        $table->addColumn('inst_abertura', 'datetime', [
+        $table->addColumn('instante_abertura', 'datetime', [
             'default' => null,
             'null' => false
         ]);
 
-        $table->addColumn('inst_fechamento', 'datetime', [
+        $table->addColumn('instante_fechamento ', 'datetime', [
             'default' => null,
             'null' => false
         ]);
 
-        $table->addColumn('oper_caixa', 'string', [
-            'default' => null,
-            'null' => false
-        ]);
+        $table->addColumn('operador_funcionario_id', 'integer')
+            ->addForeignKey(
+                'operador_funcionario_id',
+                'funcionarios',
+                'id',
+                [
+                    'delete' => 'CASCADE',
+                    'update' => 'CASCADE'
+                ]
+            );
 
         $table->addColumn('venda_id', 'integer')
             ->addForeignKey(
