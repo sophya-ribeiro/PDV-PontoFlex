@@ -9,6 +9,14 @@ use Migrations\AbstractSeed;
  */
 class VendasSeed extends AbstractSeed
 {
+    public function getDependencies(): array
+    {
+        return [
+            'FuncionariosSeed',
+            'CaixasSeed'
+        ];
+    }
+
     /**
      * Run Method.
      *
@@ -29,7 +37,8 @@ class VendasSeed extends AbstractSeed
                 'data_venda' => '2024-08-02',
                 'valor_total' => 56,
                 'desconto_total' => 0,
-                'operador_funcionario_id' => 2
+                'operador_funcionario_cpf' => '22233344455',
+                'caixa_id' => 1
             ],
             [
                 'id' => 2,
@@ -38,7 +47,8 @@ class VendasSeed extends AbstractSeed
                 'data_venda' => '2023-12-12',
                 'valor_total' => 122,
                 'desconto_total' => 10,
-                'operador_funcionario_id' => 2
+                'operador_funcionario_cpf' => '22233344455',
+                'caixa_id' => 1
             ]
 
         ];

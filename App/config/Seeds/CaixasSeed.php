@@ -11,7 +11,7 @@ class CaixasSeed extends AbstractSeed
     public function getDependencies(): array
     {
         return [
-            'VendasSeed',
+            'FuncionariosSeed',
         ];
     }
 
@@ -33,8 +33,7 @@ class CaixasSeed extends AbstractSeed
                 'fundo_troco' => 50.0,
                 'instante_abertura' => '2024-09-12 10:00:00',
                 'instante_fechamento' => '2024-09-12 17:00:00',
-                'operador_funcionario_id' => 2,
-                'venda_id' => 1
+                'operador_funcionario_cpf' => '22233344455',
             ]
         ];
 

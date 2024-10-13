@@ -13,8 +13,7 @@ class AdminSeed extends AbstractSeed
     public function getDependencies(): array
     {
         return [
-            'PapeisSeed',
-            'FuncionariosSeed'
+            'PapeisSeed'
         ];
     }
 

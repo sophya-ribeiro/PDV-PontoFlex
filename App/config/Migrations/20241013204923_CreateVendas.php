@@ -47,10 +47,25 @@ class CreateVendas extends AbstractMigration
             'scale' => 2
         ]);
 
-        $table->addColumn('operador_funcionario_id', 'integer')
+        $table->addColumn('operador_funcionario_cpf', 'string', [
+            'default' => null,
+            'limit' => 11,
+            'null' => false,
+        ])
             ->addForeignKey(
-                'operador_funcionario_id',
+                'operador_funcionario_cpf',
                 'funcionarios',
+                'cpf',
+                [
+                    'delete' => 'RESTRICT',
+                    'update' => 'CASCADE'
+                ]
+            );
+
+        $table->addColumn('caixa_id', 'integer')
+            ->addForeignKey(
+                'caixa_id',
+                'caixas',
                 'id',
                 [
                     'delete' => 'RESTRICT',

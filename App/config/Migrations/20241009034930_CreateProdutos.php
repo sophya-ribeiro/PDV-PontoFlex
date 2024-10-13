@@ -55,7 +55,7 @@ class CreateProdutos extends AbstractMigration
         $table->addColumn('categoria_id', 'integer')
             ->addForeignKey(
                 'categoria_id',
-                'categoria',
+                'categorias',
                 'id',
                 [
                     'delete' => 'CASCADE',

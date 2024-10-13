@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractSeed;
 
-class CategoriaSeed extends AbstractSeed
+class CategoriasSeed extends AbstractSeed
 {
     /**
      * Run Method.

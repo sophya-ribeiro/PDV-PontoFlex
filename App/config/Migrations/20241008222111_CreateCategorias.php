@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class CreateCategoria extends AbstractMigration
+class CreateCategorias extends AbstractMigration
 {
     /**
      * Change Method.

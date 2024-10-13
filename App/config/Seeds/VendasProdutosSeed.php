@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Migrations\AbstractSeed;
 
 
-class Vendas_ProdutosSeed extends AbstractSeed
+class VendasProdutosSeed extends AbstractSeed
 {
     public function getDependencies(): array
     {
