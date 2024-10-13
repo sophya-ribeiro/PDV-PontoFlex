@@ -32,19 +32,17 @@ class Vendas_ProdutosSeed extends AbstractSeed
                 'id' => 1,
                 'valor_venda' => 50.5,
                 'desconto' => 2,
-                'operador_caixa' => 'Maria',
                 'numero_unidades' => 3,
                 'produto_id' => 1,
-                'vendas_id' => 1
+                'venda_id' => 1
             ],
             [
                 'id' => 2,
                 'valor_venda' => 700,
                 'desconto' => 0.5,
-                'operador_caixa' => 'Sophya',
                 'numero_unidades' => 6,
                 'produto_id' => 2,
-                'vendas_id' => 2
+                'venda_id' => 2
             ]
         ];
 

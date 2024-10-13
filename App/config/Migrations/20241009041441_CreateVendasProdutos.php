@@ -29,12 +29,6 @@ class CreateVendasProdutos extends AbstractMigration
             'scale' => 2
         ]);
 
-        $table->addColumn('operador_caixa', 'string', [
-            'default' => null,
-            'limit' => 255,
-            'null' => false
-        ]);
-
         $table->addColumn('numero_unidades', 'integer', [
             'default' => 0,
             'null' => true
@@ -45,7 +39,17 @@ class CreateVendasProdutos extends AbstractMigration
             'produtos',
             'id',
             [
-                'delete' => 'CASCADE',
+                'delete' => 'RESTRICT',
+                'update' => 'CASCADE'
+            ]
+        );
+
+        $table->addColumn('venda_id', 'integer')->addForeignKey(
+            'venda_id',
+            'vendas',
+            'id',
+            [
+                'delete' => 'RESTRICT',
                 'update' => 'CASCADE'
             ]
         );

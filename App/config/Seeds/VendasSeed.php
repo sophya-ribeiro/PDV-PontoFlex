@@ -28,7 +28,8 @@ class VendasSeed extends AbstractSeed
                 'quantidade_parcelas' => 1,
                 'data_venda' => '2024-08-02',
                 'valor_total' => 56,
-                'desconto_total' => 0
+                'desconto_total' => 0,
+                'operador_funcionario_id' => 2
             ],
             [
                 'id' => 2,
@@ -36,7 +37,8 @@ class VendasSeed extends AbstractSeed
                 'quantidade_parcelas' => 1,
                 'data_venda' => '2023-12-12',
                 'valor_total' => 122,
-                'desconto_total' => 10
+                'desconto_total' => 10,
+                'operador_funcionario_id' => 2
             ]
 
         ];
