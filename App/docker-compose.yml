@@ -6,7 +6,6 @@ services:
     volumes:
       - ".:/app:consistent"
     working_dir: /app
-    user: "application"
     ports:
       - 8084:80
     links:
