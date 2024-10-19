@@ -69,7 +69,11 @@ endif;
         PontoFlex
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta(
+        'favicon.png',
+        '/favicon.png',
+        ['type' => 'icon']
+    ); ?>
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home']) ?>
 

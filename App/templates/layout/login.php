@@ -25,7 +25,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PontoFlex - Início</title>
 
-	<?= $this->Html->meta('icon') ?>
+	<?= $this->Html->meta(
+		'favicon.png',
+		'/favicon.png',
+		['type' => 'icon']
+	); ?>
 
 	<?= $this->Html->css(['style', 'login', 'bootstrap.min']) ?>
 
