@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
 /**
  * Funcionario Entity
  *
- * @property int $id
+ * @property string $cpf
  * @property string $nome_completo
  * @property \Cake\I18n\Date $data_nascimento
  * @property \Cake\I18n\Date $data_contratacao
@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property string $senha
  * @property int $papel_id
  *
- * @property \App\Model\Entity\Papei $papei
+ * @property \App\Model\Entity\Papei $papel
  */
 class Funcionario extends Entity
 {
@@ -38,7 +38,7 @@ class Funcionario extends Entity
         'nome_usuario' => true,
         'senha' => true,
         'papel_id' => true,
-        'papei' => true,
+        'papel' => true,
     ];
 
     protected function _setSenha(string $senha)

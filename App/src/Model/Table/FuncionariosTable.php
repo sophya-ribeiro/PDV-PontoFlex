@@ -40,8 +40,8 @@ class FuncionariosTable extends Table
         parent::initialize($config);
 
         $this->setTable('funcionarios');
-        $this->setDisplayField('nome_completo');
-        $this->setPrimaryKey('id');
+        $this->setDisplayField('cpf');
+        $this->setPrimaryKey('cpf');
 
         $this->belongsTo('Papeis', [
             'foreignKey' => 'papel_id',
@@ -77,7 +77,8 @@ class FuncionariosTable extends Table
             ->scalar('nome_usuario')
             ->maxLength('nome_usuario', 255)
             ->requirePresence('nome_usuario', 'create')
-            ->notEmptyString('nome_usuario');
+            ->notEmptyString('nome_usuario')
+            ->add('nome_usuario', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('senha')
@@ -101,6 +102,7 @@ class FuncionariosTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        $rules->add($rules->isUnique(['nome_usuario']), ['errorField' => 'nome_usuario']);
         $rules->add($rules->existsIn(['papel_id'], 'Papeis'), ['errorField' => 'papel_id']);
 
         return $rules;
