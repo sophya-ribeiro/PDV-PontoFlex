@@ -89,8 +89,9 @@
 
 			<tbody>
 				<?php foreach ($produtos as $produto) : ?>
-					<tr>
+					<tr data-produto-id="<?= $produto->id ?>">
 						<td class="d-none"><?= $produto->id ?></td>
+						<td class="d-none"><?= $produto->categoria->id ?></td>
 						<td class="tabela-texto py-3"><?= $produto->codigo ?></td>
 						<td class="tabela-texto py-3"><?= $produto->nome ?></td>
 						<td class="tabela-texto py-3"><?= $produto->marca ?></td>
@@ -100,7 +101,7 @@
 						<td class="tabela-texto py-3">R$ <?= $produto->preco_unitario ?></td>
 						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 						<td class="py-3">
-							<a href="#"><ion-icon name="create" class="create-icon"></ion-icon></a>
+							<a data-bs-toggle="modal" data-bs-target="#modalEditarProduto" onclick="editarDadosProduto(<?= $produto->id ?>)"><ion-icon name="create" class="create-icon"></ion-icon></a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -122,6 +123,8 @@
 		</nav>
 	</div>
 </section>
+
+<!-- Início modalCadastrarProtuto -->
 
 <div class="modal fade" id="modalCadastrarProduto" tabindex="-1" aria-labelledby="modalCadastrarProduto"
 	aria-hidden="true">
@@ -149,9 +152,10 @@
 					</div>
 
 					<div class="w-categoria">
-						<label for="produto-nome" class="col-form-label">Categoria <span class="form-span">*</span></label>
+						<label for="produto-categoria" class="col-form-label">Categoria <span class="form-span">*</span></label>
 
 						<?= $this->Form->input('categoria_id', [
+							'id' => 'produto-categoria',
 							'class' => 'form-select',
 							'type' => 'select',
 							'options' => $categorias
@@ -190,13 +194,13 @@
 					</div>
 
 					<div>
-						<label for="produto-lote" class="col-form-label">Quantidade <span class="form-span">*</span></label>
+						<label for="produto-quantidade" class="col-form-label">Quantidade <span class="form-span">*</span></label>
 						<input type="number" class="form-control" id="produto-quantidade" placeholder="0" name="quantidade_estoque" required>
 					</div>
 
 					<div>
-						<label for="produto-lote" class="col-form-label">Validade</label>
-						<input type="date" class="form-control" id="produto-validade" name="data_validade" placeholder="Lote">
+						<label for="produto-validade" class="col-form-label">Validade</label>
+						<input type="date" class="form-control" id="produto-validade" name="data_validade" placeholder="Validade">
 						<p class="validade-texto">Deixe vazio caso não tenha.</p>
 					</div>
 
@@ -212,7 +216,164 @@
 				</div>
 				<?= $this->Form->end(); ?>
 
+
 			</div>
 		</div>
 	</div>
 </div>
+<!-- Fim modalCadastrarProtuto -->
+
+
+<!-- Início modalEditarProduto -->
+<div class="modal fade" id="modalEditarProduto" tabindex="-1" aria-labelledby="modalEditarProduto"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+
+		<div class="modal-content border-0">
+			<div class="modal-header text-white">
+				<h1 class="modal-title p-1" id="modalEditarProduto">Editar produto</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<div class="modal-body">
+				<?= $this->Form->create(null, [
+					'url' => [
+						'controller' => 'Produtos',
+						'action' => 'edit'
+					],
+					'type' => 'post'
+				]); ?>
+
+				<input type="hidden" name="id" id="edit-produto-id">
+
+				<div class="mb-3 div-form">
+					<div class="w-nome">
+						<label for="edit-produto-nome" class="col-form-label">Nome <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-nome" placeholder="Digite o nome do produto" name="nome" required>
+					</div>
+
+					<div class="w-categoria">
+						<label for="edit-produto-categoria" class="col-form-label">Categoria <span class="form-span">*</span></label>
+
+						<?= $this->Form->input('categoria_id', [
+							'id' => 'edit-produto-categoria',
+							'class' => 'form-select',
+							'type' => 'select',
+							'options' => $categorias
+						]) ?>
+					</div>
+
+				</div>
+
+				<div class="mb-3 div-form">
+					<div class="w-marca">
+						<label for="edit-produto-marca" class="col-form-label">Marca <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-marca" placeholder="Digite a marca do produto" name="marca" required>
+					</div>
+
+					<div class="w-modelo">
+						<label for="edit-produto-modelo" class="col-form-label">Modelo <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-modelo" placeholder="Digite o modelo do produto" name="modelo" required>
+					</div>
+
+					<div class="w-lote">
+						<label for="edit-produto-lote" class="col-form-label">Lote <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-lote" placeholder="Lote" name="lote" required>
+					</div>
+				</div>
+
+				<div class="mb-3 div-form">
+
+					<div>
+						<label for="edit-produto-codigo" class="col-form-label">Código <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-codigo" placeholder="1234567890ABC" name="codigo" required>
+					</div>
+
+					<div>
+						<label for="edit-produto-preco" class="col-form-label">Preço <span class="form-span">*</span></label>
+						<input type="text" class="form-control" id="edit-produto-preco" placeholder="R$00,00" name="preco_unitario" required>
+					</div>
+
+					<div>
+						<label for="edit-produto-quantidade" class="col-form-label">Quantidade <span class="form-span">*</span></label>
+						<input type="number" class="form-control" id="edit-produto-quantidade" placeholder="0" name="quantidade_estoque" required>
+					</div>
+
+					<div>
+						<label for="edit-produto-validade" class="col-form-label">Validade</label>
+						<input type="date" class="form-control" id="edit-produto-validade" name="data_validade" placeholder="Validade">
+						<p class="validade-texto">Deixe vazio caso não tenha.</p>
+					</div>
+
+				</div>
+
+
+				<div class="modal-footer border-0 p-0 pt-3">
+					<?= $this->Form->input('submit', [
+						'class' => 'btn btn-primary rounded botao-cadastrar border-0 py-2 px-',
+						'type' => 'submit',
+						'value' => 'Editar produto'
+					]) ?>
+				</div>
+				<?= $this->Form->end(); ?>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Fim modalEditarProduto -->
+
+<script>
+
+	const editModal = new bootstrap.Modal(document.getElementById("modalEditarProduto"));
+	const inputEditId = document.getElementById("edit-produto-id");
+	const inputEditNome = document.getElementById("edit-produto-nome");
+	const inputEditCategoria = document.getElementById("edit-produto-categoria");
+	const inputEditMarca = document.getElementById("edit-produto-marca");
+	const inputEditModelo = document.getElementById("edit-produto-modelo");
+	const inputEditLote = document.getElementById("edit-produto-lote");
+	const inputEditCodigo = document.getElementById("edit-produto-codigo");
+	const inputEditPreco = document.getElementById("edit-produto-preco");
+	const inputEditQuantidade = document.getElementById("edit-produto-quantidade");
+	const inputEditValidade = document.getElementById("edit-produto-validade");
+	
+	
+	
+	function editarDadosProduto(id) {
+		console.log(id);
+		const linhaTabela = document.querySelector(`tr[data-produto-id="${id}"]`);
+
+		const dadosProduto = {
+        	id: linhaTabela.cells[0].textContent.trim(),
+			categoria: linhaTabela.cells[1].textContent.trim(),
+        	codigo: linhaTabela.cells[2].textContent.trim(),
+        	nome: linhaTabela.cells[3].textContent.trim(),
+        	marca: linhaTabela.cells[4].textContent.trim(),
+        	modelo: linhaTabela.cells[5].textContent.trim(),
+        	lote: linhaTabela.cells[6].textContent.trim(),
+        	quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
+        	precoUnitario: linhaTabela.cells[8].textContent.trim(),
+        	dataValidade: linhaTabela.cells[9].textContent.trim()
+		};
+
+		inputEditId.value = dadosProduto.id;
+		inputEditCategoria.value = dadosProduto.categoria;
+		inputEditNome.value = dadosProduto.nome;
+		inputEditCategoria.value = dadosProduto.categoria;
+		inputEditMarca.value = dadosProduto.marca;
+		inputEditModelo.value = dadosProduto.modelo;
+		inputEditLote.value = dadosProduto.lote;
+		inputEditCodigo.value = dadosProduto.codigo;
+		inputEditPreco.value = dadosProduto.precoUnitario;
+		inputEditQuantidade.value = dadosProduto.quantidadeEstoque;
+
+		if(dadosProduto.dataValidade != "-"){
+			inputEditValidade.value = dadosProduto.dataValidade;
+		};
+		
+		
+	}
+	
+
+</script>
