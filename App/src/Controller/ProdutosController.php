@@ -58,9 +58,11 @@ class ProdutosController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
-        $produto = $this->Produtos->get($id, contain: ['Vendas']);
+        $id = $this->request->getData('id');
+
+        $produto = $this->Produtos->get($id);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
@@ -74,9 +76,7 @@ class ProdutosController extends AppController
             $this->Flash->error(__('The produto could not be saved. Please, try again.'));
         }
 
-        $categorias = $this->Produtos->Categorias->find('list', limit: 200)->all();
-        $vendas = $this->Produtos->Vendas->find('list', limit: 200)->all();
-        $this->set(compact('produto', 'categorias', 'vendas'));
+        return $this->redirect(['action' => 'index']);
     }
 
     /**
