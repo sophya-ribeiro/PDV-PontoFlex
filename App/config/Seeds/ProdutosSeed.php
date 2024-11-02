@@ -31,32 +31,38 @@ class ProdutosSeed extends AbstractSeed
         $data = [
             [
                 'id' => 1,
+                'codigo' => '1234567890ABC',
+                'nome' => 'Produto 1',
+                'marca' => 'Marca 1',
+                'modelo' => 'Modelo 1',
+                'lote' => '2184/32',
                 'quantidade_estoque' => 10,
-                'data_reposicao' => '2024-01-01',
                 'preco_unitario' => 100,
-                'descricao' => 'Produto 1',
-                'nome_produto' => 'produto1',
-                'codigo_produto' => 'Sl1Ba',
+                'data_validade' => '2024-01-01',
                 'categoria_id' => 1
             ],
             [
                 'id' => 2,
+                'codigo' => '1234567890DEF',
+                'nome' => 'Produto 2',
+                'marca' => 'Marca 2',
+                'modelo' => 'Modelo 2',
+                'lote' => '2184/32',
                 'quantidade_estoque' => 28,
-                'data_reposicao' => '2000-10-08',
                 'preco_unitario' => 10,
-                'descricao' => 'Produto 2',
-                'nome_produto' => 'produto2',
-                'codigo_produto' => '4r56s',
+                'data_validade' => '2000-10-08',
                 'categoria_id' => 2
             ],
             [
                 'id' => 3,
+                'codigo' => '1234567890GHI',
+                'nome' => 'Produto 3',
+                'marca' => 'Marca 3',
+                'modelo' => 'Modelo 3',
+                'lote' => '2184/32',
                 'quantidade_estoque' => 5,
-                'data_reposicao' => '2024-06-06',
                 'preco_unitario' => 50,
-                'descricao' => 'Produto 3',
-                'nome_produto' => 'produto3',
-                'codigo_produto' => 'sda79',
+                'data_validade' => '2024-06-06',
                 'categoria_id' => 3
             ]
         ];

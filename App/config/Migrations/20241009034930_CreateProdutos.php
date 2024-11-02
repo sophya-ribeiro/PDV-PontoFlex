@@ -17,14 +17,39 @@ class CreateProdutos extends AbstractMigration
     {
         $table = $this->table('produtos');
 
-        $table->addColumn('quantidade_estoque', 'integer', [
-            'default' => 0,
-            'null' => true
+        $table->addColumn('codigo', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false
         ]);
 
-        $table->addColumn('data_reposicao', 'date', [
+        $table->addColumn('nome', 'string', [
             'default' => null,
-            'null' => true
+            'limit' => 255,
+            'null' => false
+        ]);
+
+        $table->addColumn('marca', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false
+        ]);
+
+        $table->addColumn('modelo', 'string', [
+            'default' => null,
+            'limit' => 128,
+            'null' => false
+        ]);
+
+        $table->addColumn('lote', 'string', [
+            'default' => null,
+            'limit' => 32,
+            'null' => false
+        ]);
+
+        $table->addColumn('quantidade_estoque', 'integer', [
+            'default' => 0,
+            'null' => false
         ]);
 
         $table->addColumn('preco_unitario', 'decimal', [
@@ -34,22 +59,9 @@ class CreateProdutos extends AbstractMigration
             'null' => false
         ]);
 
-        $table->addColumn('descricao', 'string', [
+        $table->addColumn('data_validade', 'date', [
             'default' => null,
-            'limit' => 355,
-            'null' => false
-        ]);
-
-        $table->addColumn('nome_produto', 'string', [
-            'default' => null,
-            'limit' => 255,
-            'null' => false
-        ]);
-
-        $table->addColumn('codigo_produto', 'string', [
-            'default' => null,
-            'limit' => 255,
-            'null' => false
+            'null' => true
         ]);
 
         $table->addColumn('categoria_id', 'integer')

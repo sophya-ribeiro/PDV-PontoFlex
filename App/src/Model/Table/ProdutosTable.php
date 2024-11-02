@@ -64,34 +64,45 @@ class ProdutosTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('quantidade_estoque')
-            ->allowEmptyString('quantidade_estoque');
+            ->scalar('codigo')
+            ->maxLength('codigo', 255)
+            ->requirePresence('codigo', 'create')
+            ->notEmptyString('codigo');
 
         $validator
-            ->date('data_reposicao')
-            ->allowEmptyDate('data_reposicao');
+            ->scalar('nome')
+            ->maxLength('nome', 255)
+            ->requirePresence('nome', 'create')
+            ->notEmptyString('nome');
+
+        $validator
+            ->scalar('marca')
+            ->maxLength('marca', 255)
+            ->requirePresence('marca', 'create')
+            ->notEmptyString('marca');
+
+        $validator
+            ->scalar('modelo')
+            ->maxLength('modelo', 128)
+            ->allowEmptyString('modelo');
+
+        $validator
+            ->scalar('lote')
+            ->maxLength('lote', 32)
+            ->requirePresence('lote', 'create')
+            ->notEmptyString('lote');
+
+        $validator
+            ->integer('quantidade_estoque')
+            ->allowEmptyString('quantidade_estoque');
 
         $validator
             ->decimal('preco_unitario')
             ->notEmptyString('preco_unitario');
 
         $validator
-            ->scalar('descricao')
-            ->maxLength('descricao', 355)
-            ->requirePresence('descricao', 'create')
-            ->notEmptyString('descricao');
-
-        $validator
-            ->scalar('nome_produto')
-            ->maxLength('nome_produto', 255)
-            ->requirePresence('nome_produto', 'create')
-            ->notEmptyString('nome_produto');
-
-        $validator
-            ->scalar('codigo_produto')
-            ->maxLength('codigo_produto', 255)
-            ->requirePresence('codigo_produto', 'create')
-            ->notEmptyString('codigo_produto');
+            ->date('data_validade')
+            ->allowEmptyDate('data_validade');
 
         $validator
             ->integer('categoria_id')

@@ -20,12 +20,14 @@ class ProdutosFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
+                'codigo' => 'Lorem ipsum dolor sit amet',
+                'nome' => 'Lorem ipsum dolor sit amet',
+                'marca' => 'Lorem ipsum dolor sit amet',
+                'modelo' => 'Lorem ipsum dolor sit amet',
+                'lote' => 'Lorem ipsum dolor sit amet',
                 'quantidade_estoque' => 1,
-                'data_reposicao' => '2024-10-30',
                 'preco_unitario' => 1.5,
-                'descricao' => 'Lorem ipsum dolor sit amet',
-                'nome_produto' => 'Lorem ipsum dolor sit amet',
-                'codigo_produto' => 'Lorem ipsum dolor sit amet',
+                'data_validade' => '2024-11-02',
                 'categoria_id' => 1,
             ],
         ];

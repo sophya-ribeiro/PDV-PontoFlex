@@ -9,12 +9,14 @@ use Cake\ORM\Entity;
  * Produto Entity
  *
  * @property int $id
+ * @property string $codigo
+ * @property string $nome
+ * @property string $marca
+ * @property string|null $modelo
+ * @property string $lote
  * @property int|null $quantidade_estoque
- * @property \Cake\I18n\Date|null $data_reposicao
  * @property string $preco_unitario
- * @property string $descricao
- * @property string $nome_produto
- * @property string $codigo_produto
+ * @property \Cake\I18n\Date|null $data_validade
  * @property int $categoria_id
  *
  * @property \App\Model\Entity\Categoria $categoria
@@ -32,12 +34,14 @@ class Produto extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
+        'codigo' => true,
+        'nome' => true,
+        'marca' => true,
+        'modelo' => true,
+        'lote' => true,
         'quantidade_estoque' => true,
-        'data_reposicao' => true,
         'preco_unitario' => true,
-        'descricao' => true,
-        'nome_produto' => true,
-        'codigo_produto' => true,
+        'data_validade' => true,
         'categoria_id' => true,
         'categoria' => true,
         'vendas' => true,

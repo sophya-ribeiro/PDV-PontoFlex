@@ -1,0 +1,205 @@
+/* ----- CONTAINER CENTRAL ----- */
+
+.container-central {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    padding: 0rem 0rem 1rem 1rem;
+    width: 100%;
+}
+
+.busca {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 18px;
+}
+
+.busca-botao {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.busca-input {
+    width: 100% !important;
+}
+
+.search-icon {
+    font-size: 22px;
+    margin-left: -3rem !important;
+}
+
+.filtro {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+}
+
+.filter-icon {
+    font-size: 22px;
+}
+
+.texto-filtro {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.div-tabela {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #000000;
+    border: none;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #313131;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: rgb(0, 0, 0);
+    background-color: #7dc99b99 !important;
+    border: none !important;
+}
+
+.pagination > .active > a:hover
+{
+    color: rgb(0, 0, 0);
+    background-color: #7dc99b99 !important;
+    border: none !important;
+}
+
+.create-icon {
+    font-size: 20px;
+    color: black;
+}
+
+.tabela-texto {
+    font-size: 14px !important;
+}
+
+/* ---------- MODAIS ---------- */
+
+.modal-content {
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    background-color: #20AA57 !important;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.modal-title {
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 1.2rem !important;
+}
+
+.div-form{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+input{
+    background-color: #f3f3f3 !important;
+    border: none !important;
+    padding: 0.55rem !important;
+}
+
+.form-span{
+    color: red;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.w-nome{
+    width: 60%;
+}
+
+.w-categoria{
+    width: 35%;
+}
+
+.w-dropdown{
+   width: 100% !important;
+   justify-content: space-between;
+}
+
+.w-marca{
+    width: 40%;
+}
+
+.w-modelo{
+    width: 35%;
+}
+
+.w-lote{
+    width: 20%;
+}
+
+.botao-categoria{
+    width: 90% !important;
+}
+
+.btn-secondary {
+    --bs-btn-color: #000000 !important;
+    --bs-btn-bg: #edecec !important;
+    padding: 0.55rem !important;
+}
+
+.btn:hover {
+    color: #000000 !important;
+    background-color: #edecec !important;
+    text-decoration: none !important;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    color: black !important;
+    background-color:  #d4d4d4 !important;
+}
+
+.validade-texto{
+    font-size: 11px;
+    text-align: start;
+    padding-top: 5px;
+    padding-left: 4px;
+}
+
+/* -------- RESPONSIVIDADE -------- */
+
+
+@media (max-width: 1035px) {}
+
+@media (min-width: 721px) {}
+
+@media (max-width: 720px) {}

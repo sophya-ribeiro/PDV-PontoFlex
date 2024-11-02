@@ -154,3 +154,93 @@ main {
 	padding-left: 5%;
 	padding-right: 5%;
 }
+
+/* ----- CONTEUDO LATERAL ------ */
+
+.container-lateral {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 3rem;
+	min-height: 500px;
+	min-width: 250px;
+	margin-bottom: 2rem;
+}
+
+.container-lateral-nav {
+	margin-top: 2rem;
+	background-color: white;
+	border-radius: 1rem;
+}
+
+.container-lateral nav {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 2rem 2rem 2rem;
+}
+
+.container-titulo {
+	display: flex;
+	flex-direction: row;
+	gap: 1.5rem;
+	background-color: #20AA57;
+	padding: 1.3rem;
+	border-radius: 20px 20px 20px 0px;
+	align-items: center;
+}
+
+.cube-icon {
+	font-size: 34px;
+	color: white;
+}
+
+.titulo-secao {
+	font-size: 22px;
+	color: white;
+	font-weight: 600;
+}
+
+.subt-secao {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.secao-navegacao {
+	display: flex;
+	flex-direction: column;
+}
+
+.itens-nav {
+	font-weight: 300;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+/* -------- FOOTER -------- */
+
+footer {
+	display: flex;
+	flex-direction: column;
+}
+
+footer a {
+	color: #585858;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+footer div {
+	margin-top: 2rem;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.botao-cadastrar {
+	background-color: #20AA57 !important;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color: #f5fff9;
+}

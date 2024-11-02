@@ -21,17 +21,17 @@ class CategoriasSeed extends AbstractSeed
         $data = [
             [
                 'id' => 1,
-                'nome' => 'categoria1',
+                'nome' => 'Insumos',
                 'cor' => 'azul'
             ],
             [
                 'id' => 2,
-                'nome' => 'categoria2',
+                'nome' => 'Acessórios',
                 'cor' => 'amarelo'
             ],
             [
                 'id' => 3,
-                'nome' => 'categoria3',
+                'nome' => 'Peças',
                 'cor' => 'vermelho'
             ]
         ];
