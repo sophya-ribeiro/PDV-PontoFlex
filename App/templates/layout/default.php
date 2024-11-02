@@ -15,6 +15,13 @@
  * @var \App\View\AppView $this
  */
 
+$currentRoute = strtolower($this->getName());
+
+function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
+{
+    return $currentRoute == $nomeItem ?  "nav-item-ativo" : "nav-item-inativo";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,33 +39,64 @@
         ['type' => 'icon']
     ); ?>
 
-    <?= $this->Html->css(['style', 'bootstrap.min']) ?>
+    <?= $this->Html->css(['style', 'default', 'bootstrap.min']) ?>
 
     <?= $this->Html->script(['bootstrap.bundle.min']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+<body class="bg-light">
+    <header>
+        <div>
+            <img src="/img/logo-retang.png" class="img-logo">
         </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+
+        <nav>
+            <ul class="m-0">
+                <li>
+                    <a class="<?= navItemAtivoOuInativo("produtos", $currentRoute) ?>" href="/produtos">Estoque</a>
+                </li>
+                <li>
+                    <a class="<?= navItemAtivoOuInativo("caixas", $currentRoute) ?>" href="#">Caixa</a>
+                </li>
+                <li>
+                    <a class="<?= navItemAtivoOuInativo("relatorios", $currentRoute) ?>" href="#">Relatórios</a>
+                </li>
+                <li>
+                    <a class="<?= navItemAtivoOuInativo("usuarios", $currentRoute) ?>" href="#">Usuários</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <ion-icon name="person-circle-outline" class="person-circle-outline"></ion-icon>
+                Sophya Ribeiro
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item dropdown-item--primeiro" href="#">
+                    <ion-icon name="settings-outline" class="dropdown-icon"></ion-icon>
+                    Configurações
+                </a>
+                <a class="dropdown-item dropdown-item--ultimo" href="/logout">
+                    <ion-icon name="log-out-outline" class="dropdown-icon"></ion-icon>
+                    Sair da conta
+                </a>
+            </div>
         </div>
-    </nav>
-    <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
+    </header>
+
+    <main>
+        <?= $this->Flash->render() ?>
+        <?= $this->fetch('content') ?>
     </main>
-    <footer>
-    </footer>
 </body>
 
 </html>
