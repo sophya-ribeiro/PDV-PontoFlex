@@ -30,7 +30,7 @@ class ProdutosController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects.
      */
     public function add()
     {
@@ -55,17 +55,17 @@ class ProdutosController extends AppController
      * Edit method
      *
      * @param string|null $id Produto id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit()
     {
-        $id = $this->request->getData('id');
-
-        $produto = $this->Produtos->get($id);
-
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
+            $requestData = $this->request->getData();
+            $requestData['preco_unitario'] = floatval(str_replace('.', '', $requestData['preco_unitario']));
+
+            $produto = $this->Produtos->get($requestData['id']);
+            $produto = $this->Produtos->patchEntity($produto, $requestData);
 
             if ($this->Produtos->save($produto)) {
                 $this->Flash->success(__('The produto has been saved.'));

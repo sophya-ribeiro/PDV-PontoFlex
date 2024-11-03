@@ -28,7 +28,6 @@
 		</nav>
 	</div>
 
-
 	<footer>
 		<a class="" href="#">Termos e condições</a>
 		<a class="" href="#">Suporte</a>
@@ -41,15 +40,12 @@
 </div>
 
 <section class="container-central">
-
 	<div class="busca m-0">
-
 		<div class="busca-botao">
 			<input class="form-control border rounded-pill busca-input" type="text" id="example-search-input" value=""
 				placeholder="Buscar produto...">
 			<ion-icon name="search" class="search-icon"></ion-icon>
 		</div>
-
 
 		<div class="filtro">
 			<ion-icon name="filter" class="filter-icon"></ion-icon>
@@ -60,7 +56,8 @@
 					Mais recentes
 				</button>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item dropdown-item--primeiro" href="#">Mais antigos</a></li>
+					<li><a class="dropdown-item dropdown-item--primeiro" href="#">Mais recentes</a></li>
+					<li><a class="dropdown-item" href="#">Mais antigos</a></li>
 					<li><a class="dropdown-item" href="#">Maior quantidade</a></li>
 					<li><a class="dropdown-item" href="#">Menor quantidade</a></li>
 					<li><a class="dropdown-item" href="#">Maior preço</a></li>
@@ -98,7 +95,7 @@
 						<td class="tabela-texto py-3"><?= $produto->modelo ?></td>
 						<td class="tabela-texto py-3"><?= $produto->lote ?></td>
 						<td class="tabela-texto py-3"><?= $produto->quantidade_estoque ?></td>
-						<td class="tabela-texto py-3">R$ <?= $produto->preco_unitario ?></td>
+						<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
 						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 						<td class="py-3">
 							<a data-bs-toggle="modal" data-bs-target="#modalEditarProduto" onclick="editarDadosProduto(<?= $produto->id ?>)"><ion-icon name="create" class="create-icon"></ion-icon></a>
@@ -125,7 +122,6 @@
 </section>
 
 <!-- Início modalCadastrarProtuto -->
-
 <div class="modal fade" id="modalCadastrarProduto" tabindex="-1" aria-labelledby="modalCadastrarProduto"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
@@ -161,7 +157,6 @@
 							'options' => $categorias
 						]) ?>
 					</div>
-
 				</div>
 
 				<div class="mb-3 div-form">
@@ -182,7 +177,6 @@
 				</div>
 
 				<div class="mb-3 div-form">
-
 					<div>
 						<label for="produto-codigo" class="col-form-label">Código <span class="form-span">*</span></label>
 						<input type="text" class="form-control" id="produto-codigo" placeholder="1234567890ABC" name="codigo" required>
@@ -190,7 +184,7 @@
 
 					<div>
 						<label for="produto-preco" class="col-form-label">Preço <span class="form-span">*</span></label>
-						<input type="text" class="form-control" id="produto-preco" placeholder="R$00,00" name="preco_unitario" required>
+						<input type="text" class="form-control" id="produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
 					</div>
 
 					<div>
@@ -203,9 +197,7 @@
 						<input type="date" class="form-control" id="produto-validade" name="data_validade" placeholder="Validade">
 						<p class="validade-texto">Deixe vazio caso não tenha.</p>
 					</div>
-
 				</div>
-
 
 				<div class="modal-footer border-0 p-0 pt-3">
 					<?= $this->Form->input('submit', [
@@ -215,8 +207,6 @@
 					]) ?>
 				</div>
 				<?= $this->Form->end(); ?>
-
-
 			</div>
 		</div>
 	</div>
@@ -228,7 +218,6 @@
 <div class="modal fade" id="modalEditarProduto" tabindex="-1" aria-labelledby="modalEditarProduto"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
-
 		<div class="modal-content border-0">
 			<div class="modal-header text-white">
 				<h1 class="modal-title p-1" id="modalEditarProduto">Editar produto</h1>
@@ -262,7 +251,6 @@
 							'options' => $categorias
 						]) ?>
 					</div>
-
 				</div>
 
 				<div class="mb-3 div-form">
@@ -283,7 +271,6 @@
 				</div>
 
 				<div class="mb-3 div-form">
-
 					<div>
 						<label for="edit-produto-codigo" class="col-form-label">Código <span class="form-span">*</span></label>
 						<input type="text" class="form-control" id="edit-produto-codigo" placeholder="1234567890ABC" name="codigo" required>
@@ -291,7 +278,7 @@
 
 					<div>
 						<label for="edit-produto-preco" class="col-form-label">Preço <span class="form-span">*</span></label>
-						<input type="text" class="form-control" id="edit-produto-preco" placeholder="R$00,00" name="preco_unitario" required>
+						<input type="text" class="form-control" id="edit-produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
 					</div>
 
 					<div>
@@ -304,9 +291,7 @@
 						<input type="date" class="form-control" id="edit-produto-validade" name="data_validade" placeholder="Validade">
 						<p class="validade-texto">Deixe vazio caso não tenha.</p>
 					</div>
-
 				</div>
-
 
 				<div class="modal-footer border-0 p-0 pt-3">
 					<?= $this->Form->input('submit', [
@@ -316,8 +301,6 @@
 					]) ?>
 				</div>
 				<?= $this->Form->end(); ?>
-
-
 			</div>
 		</div>
 	</div>
@@ -325,7 +308,6 @@
 <!-- Fim modalEditarProduto -->
 
 <script>
-
 	const editModal = new bootstrap.Modal(document.getElementById("modalEditarProduto"));
 	const inputEditId = document.getElementById("edit-produto-id");
 	const inputEditNome = document.getElementById("edit-produto-nome");
@@ -337,24 +319,21 @@
 	const inputEditPreco = document.getElementById("edit-produto-preco");
 	const inputEditQuantidade = document.getElementById("edit-produto-quantidade");
 	const inputEditValidade = document.getElementById("edit-produto-validade");
-	
-	
-	
+
 	function editarDadosProduto(id) {
-		console.log(id);
 		const linhaTabela = document.querySelector(`tr[data-produto-id="${id}"]`);
 
 		const dadosProduto = {
-        	id: linhaTabela.cells[0].textContent.trim(),
+			id: linhaTabela.cells[0].textContent.trim(),
 			categoria: linhaTabela.cells[1].textContent.trim(),
-        	codigo: linhaTabela.cells[2].textContent.trim(),
-        	nome: linhaTabela.cells[3].textContent.trim(),
-        	marca: linhaTabela.cells[4].textContent.trim(),
-        	modelo: linhaTabela.cells[5].textContent.trim(),
-        	lote: linhaTabela.cells[6].textContent.trim(),
-        	quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
-        	precoUnitario: linhaTabela.cells[8].textContent.trim(),
-        	dataValidade: linhaTabela.cells[9].textContent.trim()
+			codigo: linhaTabela.cells[2].textContent.trim(),
+			nome: linhaTabela.cells[3].textContent.trim(),
+			marca: linhaTabela.cells[4].textContent.trim(),
+			modelo: linhaTabela.cells[5].textContent.trim(),
+			lote: linhaTabela.cells[6].textContent.trim(),
+			quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
+			precoUnitario: linhaTabela.cells[8].textContent.replace("R$", "").trim(),
+			dataValidade: linhaTabela.cells[9].textContent.trim()
 		};
 
 		inputEditId.value = dadosProduto.id;
@@ -368,12 +347,10 @@
 		inputEditPreco.value = dadosProduto.precoUnitario;
 		inputEditQuantidade.value = dadosProduto.quantidadeEstoque;
 
-		if(dadosProduto.dataValidade != "-"){
+		if (dadosProduto.dataValidade != "-") {
+			dadosProduto.dataValidade = new Date(dadosProduto.dataValidade).toISOString().split('T')[0];
+
 			inputEditValidade.value = dadosProduto.dataValidade;
 		};
-		
-		
 	}
-	
-
 </script>
