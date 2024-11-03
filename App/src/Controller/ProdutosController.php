@@ -33,14 +33,16 @@ class ProdutosController extends AppController
             $filtro = $this->request->getQuery('filtro');
         }
 
-        $produtos = $this->Produtos->find()
+        $produtosQuery = $this->Produtos->find()
             ->contain(['Categorias'])
-            ->orderBy($ordem[$filtro])
-            ->all();
+            ->orderBy($ordem[$filtro]);
 
+        $produtos =  $this->paginate($produtosQuery, ['limit' => 10]);
         $categorias = $this->Produtos->Categorias->find('list')->all();
 
-        $this->set(compact('produtos', 'categorias', 'filtro'));
+        $parametrosPaginacao = $produtos->pagingParams();
+
+        $this->set(compact('produtos', 'categorias', 'filtro', 'parametrosPaginacao'));
     }
 
     /**

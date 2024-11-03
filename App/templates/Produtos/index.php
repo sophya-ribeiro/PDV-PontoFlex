@@ -107,14 +107,24 @@
 
 		<nav aria-label="Navegação de página exemplo">
 			<ul class="pagination justify-content-center">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1">Anterior</a>
+				<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
+					<a class="page-link"
+						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] - 1]]) ?>"
+						tabindex="<?= $parametrosPaginacao['hasPrevPage'] ? 0 : -1 ?>">
+						Anterior
+					</a>
 				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">Próximo</a>
+
+				<?php for ($i = 1; $i <= $parametrosPaginacao['pageCount']; $i++) : ?>
+					<li class="page-item <?= $parametrosPaginacao['currentPage'] == $i ? 'active' : '' ?>"><a class="page-link" href="<?= $this->Url->build(['?' => ['page' => $i, 'filtro' => $filtro]]) ?>"><?= $i ?></a></li>
+				<?php endfor; ?>
+
+				<li class="page-item <?= $parametrosPaginacao['hasNextPage'] ? '' : 'disabled' ?>">
+					<a class="page-link"
+						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] + 1]]) ?>"
+						tabindex="<?= $parametrosPaginacao['hasNextPage'] ? 0 : -1 ?>">
+						Próximo
+					</a>
 				</li>
 			</ul>
 		</nav>
