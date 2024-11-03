@@ -19,8 +19,8 @@ class ProdutosController extends AppController
     public function index()
     {
         $ordem = [
-            'Mais recentes' => ['Produtos.id' => 'ASC'],
-            'Mais antigos' => ['Produtos.id' => 'DESC'],
+            'Mais recentes' => ['Produtos.id' => 'DESC'],
+            'Mais antigos' => ['Produtos.id' => 'ASC'],
             'Maior quantidade' => ['Produtos.quantidade_estoque' => 'DESC'],
             'Menor quantidade' => ['Produtos.quantidade_estoque' => 'ASC'],
             'Maior preço' => ['Produtos.preco_unitario' => 'DESC'],
