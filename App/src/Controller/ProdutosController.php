@@ -18,13 +18,29 @@ class ProdutosController extends AppController
      */
     public function index()
     {
+        $ordem = [
+            'Mais recentes' => ['Produtos.id' => 'ASC'],
+            'Mais antigos' => ['Produtos.id' => 'DESC'],
+            'Maior quantidade' => ['Produtos.quantidade_estoque' => 'DESC'],
+            'Menor quantidade' => ['Produtos.quantidade_estoque' => 'ASC'],
+            'Maior preço' => ['Produtos.preco_unitario' => 'DESC'],
+            'Menor preço' => ['Produtos.preco_unitario' => 'ASC'],
+        ];
+
+        $filtro = 'Mais recentes';
+
+        if (array_key_exists($this->request->getQuery('filtro'), $ordem)) {
+            $filtro = $this->request->getQuery('filtro');
+        }
+
         $produtos = $this->Produtos->find()
             ->contain(['Categorias'])
+            ->orderBy($ordem[$filtro])
             ->all();
 
         $categorias = $this->Produtos->Categorias->find('list')->all();
 
-        $this->set(compact('produtos', 'categorias'));
+        $this->set(compact('produtos', 'categorias', 'filtro'));
     }
 
     /**

@@ -53,15 +53,15 @@
 			<div class="dropdown">
 				<button class="btn btn-light dropdown-toggle rounded btn-secondary px-4 py-2" type="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
-					Mais recentes
+					<?= $filtro ?>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item dropdown-item--primeiro" href="#">Mais recentes</a></li>
-					<li><a class="dropdown-item" href="#">Mais antigos</a></li>
-					<li><a class="dropdown-item" href="#">Maior quantidade</a></li>
-					<li><a class="dropdown-item" href="#">Menor quantidade</a></li>
-					<li><a class="dropdown-item" href="#">Maior preço</a></li>
-					<li><a class="dropdown-item dropdown-item--ultimo" href="#">Menor preço</a></li>
+					<li><a class="dropdown-item dropdown-item--primeiro" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais recentes']]) ?>">Mais recentes</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais antigos']]) ?>">Mais antigos</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior quantidade']]) ?>">Maior quantidade</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor quantidade']]) ?>">Menor quantidade</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior preço']]) ?>">Maior preço</a></li>
+					<li><a class="dropdown-item dropdown-item--ultimo" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor preço']]) ?>">Menor preço</a></li>
 				</ul>
 			</div>
 		</div>
