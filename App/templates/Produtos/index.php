@@ -308,7 +308,8 @@
 <!-- Fim modalEditarProduto -->
 
 <script>
-	const editModal = new bootstrap.Modal(document.getElementById("modalEditarProduto"));
+	const modalEditarProduto = document.getElementById("modalEditarProduto");
+
 	const inputEditId = document.getElementById("edit-produto-id");
 	const inputEditNome = document.getElementById("edit-produto-nome");
 	const inputEditCategoria = document.getElementById("edit-produto-categoria");
@@ -337,7 +338,6 @@
 		};
 
 		inputEditId.value = dadosProduto.id;
-		inputEditCategoria.value = dadosProduto.categoria;
 		inputEditNome.value = dadosProduto.nome;
 		inputEditCategoria.value = dadosProduto.categoria;
 		inputEditMarca.value = dadosProduto.marca;
@@ -353,4 +353,17 @@
 			inputEditValidade.value = dadosProduto.dataValidade;
 		};
 	}
+
+	modalEditarProduto.addEventListener('hide.bs.modal', event => {
+		inputEditId.value = null;
+		inputEditCategoria.value = null;
+		inputEditNome.value = null;
+		inputEditCategoria.value = null;
+		inputEditMarca.value = null;
+		inputEditModelo.value = null;
+		inputEditLote.value = null;
+		inputEditCodigo.value = null;
+		inputEditPreco.value = null;
+		inputEditQuantidade.value = null;
+	})
 </script>
