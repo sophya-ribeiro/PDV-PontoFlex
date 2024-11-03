@@ -50,10 +50,12 @@ class ProdutosController extends AppController
      */
     public function add()
     {
-        $produto = $this->Produtos->newEmptyEntity();
-
         if ($this->request->is('post')) {
-            $produto = $this->Produtos->patchEntity($produto, $this->request->getData());
+            $requestData = $this->request->getData();
+            $requestData['preco_unitario'] = floatval(str_replace('.', '', $requestData['preco_unitario']));
+
+            $produto = $this->Produtos->newEmptyEntity();
+            $produto = $this->Produtos->patchEntity($produto, $requestData);
 
             if ($this->Produtos->save($produto)) {
                 $this->Flash->success(__('The produto has been saved.'));
