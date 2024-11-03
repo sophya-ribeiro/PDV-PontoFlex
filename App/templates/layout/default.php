@@ -78,7 +78,7 @@ function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
             <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <ion-icon name="person-circle-outline" class="person-circle-outline"></ion-icon>
-                Sophya Ribeiro
+                <?= $this->request->getAttribute('identity')->nome_completo ?>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item dropdown-item--primeiro" href="#">
