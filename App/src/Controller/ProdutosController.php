@@ -60,12 +60,12 @@ class ProdutosController extends AppController
             $produto = $this->Produtos->patchEntity($produto, $requestData);
 
             if ($this->Produtos->save($produto)) {
-                $this->Flash->success(__('The produto has been saved.'));
+                $this->Flash->success(__('Produto cadastrado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
 
-            $this->Flash->error(__('The produto could not be saved. Please, try again.'));
+            $this->Flash->error(__('O produto não pôde ser cadastrado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -88,12 +88,12 @@ class ProdutosController extends AppController
             $produto = $this->Produtos->patchEntity($produto, $requestData);
 
             if ($this->Produtos->save($produto)) {
-                $this->Flash->success(__('The produto has been saved.'));
+                $this->Flash->success(__('Produto alterado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
 
-            $this->Flash->error(__('The produto could not be saved. Please, try again.'));
+            $this->Flash->error(__('O produto não pôde ser alterado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
