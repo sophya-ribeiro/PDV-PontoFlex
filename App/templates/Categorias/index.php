@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PontoFlex - Categorias</title>
+
+    <link rel="icon" href="../assets/images/LOGO 1080x1080.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="script" href="script.js">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body class="background">
+
+    <header>
+
+        <div>
+            <img src="../assets/images/logo-retang.png" class="img-logo">
+        </div>
+
+
+        <nav>
+            <ul class="m-0">
+                <li>
+                    <a class="nav-item-ativo" href="#">Estoque</a>
+                </li>
+                <li>
+                    <a class="nav-item-inativo" href="#">Caixa</a>
+                </li>
+                <li>
+                    <a class="nav-item-inativo" href="#">Relatórios</a>
+                </li>
+                <li>
+                    <a class="nav-item-inativo" href="#">Usuários</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary button-account px-3 py-1" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <ion-icon name="person-circle-outline" class="person-circle-outline"></ion-icon>
+                Sophya Ribeiro
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item dropdown-item--primeiro" href="#">
+                    <ion-icon name="settings-outline" class="dropdown-icon"></ion-icon>
+                    Configurações
+                </a>
+                <a class="dropdown-item dropdown-item--ultimo" href="#">
+                    <ion-icon name="log-out-outline" class="dropdown-icon"></ion-icon>
+                    Sair da conta
+                </a>
+
+            </div>
+        </div>
+
+
+    </header>
+
+    <main>
+
+        <div class="container-lateral">
+
+            <div class="container-lateral-nav">
+                <div class="container-titulo">
+                    <ion-icon name="cube" class="cube-icon"></ion-icon>
+                    <h1 class="titulo-secao m-0">Estoque</h1>
+                </div>
+
+                <nav>
+                    <h2 class="subt-secao">Produtos</h2>
+
+                    <ul class="secao-navegacao m-0 p-0">
+                        <li><a class="itens-nav" href="#">Produtos cadastrados</a></li>
+                        <li><a class="itens-nav" data-bs-toggle="modal"
+                                data-bs-target="#modalCadastrarProduto">Cadastrar
+                                produto</a></li>
+                    </ul>
+
+                    <h2 class="subt-secao pt-4">Categorias</h2>
+
+                    <ul class="secao-navegacao m-0 p-0">
+                        <li><a class="itens-nav" href="#">Categorias cadastradas</a></li>
+                        <li><a class="itens-nav" data-bs-toggle="modal"
+                                data-bs-target="#modalCadastrarCategoria">Cadastrar categoria</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+
+
+            <footer>
+                <a class="" href="#">Termos e condições</a>
+                <a class="" href="#">Suporte</a>
+
+                <div>
+                    © 2024 PontoFlex. <br>
+                    Todos direitos reservados
+                </div>
+
+            </footer>
+
+        </div>
+
+        <section class="container-central">
+
+            <div class="busca m-0">
+
+                <div class="busca-botao">
+                    <input class="form-control border rounded-pill busca-input" type="text" id="example-search-input"
+                        value="" placeholder="Buscar produto...">
+                    <ion-icon name="search" class="search-icon"></ion-icon>
+                </div>
+
+
+                <div class="filtro">
+                    <ion-icon name="filter" class="filter-icon"></ion-icon>
+                    <h1 class="texto-filtro m-0">Filtrar por:</h1>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle rounded btn-secondary px-4 py-2" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Mais recentes
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item dropdown-item--primeiro" href="#">Mais antigos</a></li>
+                            <li><a class="dropdown-item" href="#">Maior quantidade</a></li>
+                            <li><a class="dropdown-item" href="#">Menor quantidade</a></li>
+                            <li><a class="dropdown-item" href="#">Maior preço</a></li>
+                            <li><a class="dropdown-item dropdown-item--ultimo" href="#">Menor preço</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INÍCIO MODAL CADASTRAR PRODUTO -->
+
+            <div class="modal fade" id="modalCadastrarProduto" tabindex="-1" aria-labelledby="modalCadastrarProduto"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                    <div class="modal-content border-0">
+                        <div class="modal-header text-white">
+                            <h1 class="modal-title p-1" id="modalCadastrarProduto">Novo produto</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <form>
+                                <div class="mb-3 div-form">
+
+                                    <div class="w-nome">
+                                        <label for="produto-nome" class="col-form-label">Nome <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-nome"
+                                            placeholder="Digite o nome do produto" required>
+                                    </div>
+
+                                    <div class="w-categoria">
+                                        <label for="produto-nome" class="col-form-label">Categoria <span
+                                                class="form-span">*</span></label>
+
+                                        <div class="dropdown w-dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle w-dropdown" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Selecione a categoria
+                                            </button>
+                                            <ul class="dropdown-menu overflow-hidden">
+                                                <li><a class="dropdown-item" href="#">Insumos</a></li>
+                                                <li><a class="dropdown-item" href="#">Acessórios</a></li>
+                                                <li><a class="dropdown-item" href="#">Peças</a></li>
+                                                <li><a class="dropdown-item" href="#">Produtos</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3 div-form">
+
+                                    <div class="w-marca">
+                                        <label for="produto-marca" class="col-form-label">Marca <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-marca"
+                                            placeholder="Digite a marca do produto" required>
+                                    </div>
+
+                                    <div class="w-modelo">
+                                        <label for="produto-modelo" class="col-form-label">Modelo <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-modelo"
+                                            placeholder="Digite o modelo do produto" required>
+                                    </div>
+
+                                    <div class="w-lote">
+                                        <label for="produto-lote" class="col-form-label">Lote <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-lote" placeholder="Lote"
+                                            required>
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3 div-form">
+
+                                    <div>
+                                        <label for="produto-marca" class="col-form-label">Código <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-codigo"
+                                            placeholder="1234567890ABC" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="produto-preco" class="col-form-label">Preço <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-preco" placeholder="R$00,00"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <label for="produto-lote" class="col-form-label">Quantidade <span
+                                                class="form-span">*</span></label>
+                                        <input type="number" class="form-control" id="produto-quantidade"
+                                            placeholder="0" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="produto-lote" class="col-form-label">Validade</label>
+                                        <input type="date" class="form-control" id="produto-validade"
+                                            placeholder="Lote">
+                                        <p class="validade-texto">Deixe vazio caso não tenha.</p>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="modal-footer border-0 p-0 pt-3">
+                                    <button type="submit"
+                                        class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
+                                        produto</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- INÍCIO MODAL CADASTRAR CATEGORIA -->
+
+            <div class="modal fade" id="modalCadastrarCategoria" tabindex="-1" aria-labelledby="modalCadastrarCategoria"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                    <div class="modal-content border-0">
+                        <div class="modal-header text-white">
+                            <h1 class="modal-title p-1" id="modalCadastrarCategoria">Nova categoria</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <form>
+
+                                <div class="mb-3 div-form">
+
+                                    <div class="w-100">
+                                        <label for="produto-marca" class="col-form-label">Nome <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="produto-marca"
+                                            placeholder="Digite um nome para sua categoria" required>
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3 div-form">
+
+                                    <div class>
+                                        <label for="produto-marca" class="col-form-label">Nome <span
+                                                class="form-span">*</span></label>
+                                    </div>
+
+                                    <div class="w-100">
+
+                                        <input type="radio" name="selectedColor" id="color1" class="color-picker-input"
+                                            value="#FF5733" required>
+                                        <label for="color1" class="color-picker-label"
+                                            style="background-color: #FF5733;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color2" class="color-picker-input"
+                                            value="#33FF57">
+                                        <label for="color2" class="color-picker-label"
+                                            style="background-color: #33FF57;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color3" class="color-picker-input"
+                                            value="#3357FF">
+                                        <label for="color3" class="color-picker-label"
+                                            style="background-color: #3357FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color4" class="color-picker-input"
+                                            value="#FF33FF">
+                                        <label for="color4" class="color-picker-label"
+                                            style="background-color: #FF33FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
+                                            value="#FFFF33">
+                                        <label for="color5" class="color-picker-label"
+                                            style="background-color: #FFFF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
+                                            value="#57FF33">
+                                        <label for="color6" class="color-picker-label"
+                                            style="background-color: #57FF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
+                                            value="#FF3357">
+                                        <label for="color7" class="color-picker-label"
+                                            style="background-color: #FF3357;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
+                                            value="#33FFF5">
+                                        <label for="color8" class="color-picker-label"
+                                            style="background-color: #33FFF5;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
+                                            value="#F533FF">
+                                        <label for="color9" class="color-picker-label"
+                                            style="background-color: #F533FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
+                                            value="#FFAA33">
+                                        <label for="color10" class="color-picker-label"
+                                            style="background-color: #FFAA33;"></label>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer border-0 p-0 pt-3">
+                                    <button type="submit"
+                                        class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
+                                        categoria</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+</body>
+</html>
