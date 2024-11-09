@@ -109,7 +109,7 @@
 			<ul class="pagination justify-content-center">
 				<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
 					<a class="page-link"
-						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] - 1]]) ?>"
+						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] - 1, 'filtro' => $filtro]]) ?>"
 						tabindex="<?= $parametrosPaginacao['hasPrevPage'] ? 0 : -1 ?>">
 						Anterior
 					</a>
@@ -121,7 +121,7 @@
 
 				<li class="page-item <?= $parametrosPaginacao['hasNextPage'] ? '' : 'disabled' ?>">
 					<a class="page-link"
-						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] + 1]]) ?>"
+						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] + 1, 'filtro' => $filtro]]) ?>"
 						tabindex="<?= $parametrosPaginacao['hasNextPage'] ? 0 : -1 ?>">
 						Próximo
 					</a>
