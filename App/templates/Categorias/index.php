@@ -1,75 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PontoFlex - Categorias</title>
-
-    <link rel="icon" href="../assets/images/LOGO 1080x1080.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="script" href="script.js">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</head>
-
-<body class="background">
-
-    <header>
-
-        <div>
-            <img src="../assets/images/logo-retang.png" class="img-logo">
-        </div>
-
-
-        <nav>
-            <ul class="m-0">
-                <li>
-                    <a class="nav-item-ativo" href="#">Estoque</a>
-                </li>
-                <li>
-                    <a class="nav-item-inativo" href="#">Caixa</a>
-                </li>
-                <li>
-                    <a class="nav-item-inativo" href="#">Relatórios</a>
-                </li>
-                <li>
-                    <a class="nav-item-inativo" href="#">Usuários</a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <div class="dropdown">
-            <button class="btn btn-secondary button-account px-3 py-1" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <ion-icon name="person-circle-outline" class="person-circle-outline"></ion-icon>
-                Sophya Ribeiro
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item dropdown-item--primeiro" href="#">
-                    <ion-icon name="settings-outline" class="dropdown-icon"></ion-icon>
-                    Configurações
-                </a>
-                <a class="dropdown-item dropdown-item--ultimo" href="#">
-                    <ion-icon name="log-out-outline" class="dropdown-icon"></ion-icon>
-                    Sair da conta
-                </a>
-
-            </div>
-        </div>
-
-
-    </header>
 
     <main>
 
@@ -319,49 +248,47 @@
                                         <label for="color4" class="color-picker-label"
                                             style="background-color: #FF33FF;"></label>
     
-                                        <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
-                                            value="#FFFF33">
-                                        <label for="color5" class="color-picker-label"
-                                            style="background-color: #FFFF33;"></label>
-    
-                                        <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
-                                            value="#57FF33">
-                                        <label for="color6" class="color-picker-label"
-                                            style="background-color: #57FF33;"></label>
-    
-                                        <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
-                                            value="#FF3357">
-                                        <label for="color7" class="color-picker-label"
-                                            style="background-color: #FF3357;"></label>
-    
-                                        <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
-                                            value="#33FFF5">
-                                        <label for="color8" class="color-picker-label"
-                                            style="background-color: #33FFF5;"></label>
-    
-                                        <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
-                                            value="#F533FF">
-                                        <label for="color9" class="color-picker-label"
-                                            style="background-color: #F533FF;"></label>
-    
-                                        <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
-                                            value="#FFAA33">
-                                        <label for="color10" class="color-picker-label"
-                                            style="background-color: #FFAA33;"></label>
-                                    </div>
+                                    <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
+                                        value="#FFFF33">
+                                    <label for="color5" class="color-picker-label"
+                                        style="background-color: #FFFF33;"></label>
 
+                                    <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
+                                        value="#57FF33">
+                                    <label for="color6" class="color-picker-label"
+                                        style="background-color: #57FF33;"></label>
+
+                                    <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
+                                        value="#FF3357">
+                                    <label for="color7" class="color-picker-label"
+                                        style="background-color: #FF3357;"></label>
+
+                                    <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
+                                        value="#33FFF5">
+                                    <label for="color8" class="color-picker-label"
+                                        style="background-color: #33FFF5;"></label>
+
+                                    <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
+                                        value="#F533FF">
+                                    <label for="color9" class="color-picker-label"
+                                        style="background-color: #F533FF;"></label>
+
+                                    <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
+                                        value="#FFAA33">
+                                    <label for="color10" class="color-picker-label"
+                                        style="background-color: #FFAA33;"></label>
                                 </div>
 
-                                <div class="modal-footer border-0 p-0 pt-3">
-                                    <button type="submit"
-                                        class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
-                                        categoria</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+
+                            <div class="modal-footer border-0 p-0 pt-3">
+                                <button type="submit"
+                                    class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
+                                    categoria</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-    </main>
-</body>
-</html>
+        </div>
+</main>
