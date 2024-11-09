@@ -1,6 +1,4 @@
-
-
-    <main>
+<main>
 
         <div class="container-lateral">
 
@@ -248,47 +246,174 @@
                                         <label for="color4" class="color-picker-label"
                                             style="background-color: #FF33FF;"></label>
     
-                                    <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
-                                        value="#FFFF33">
-                                    <label for="color5" class="color-picker-label"
-                                        style="background-color: #FFFF33;"></label>
+                                        <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
+                                            value="#FFFF33">
+                                        <label for="color5" class="color-picker-label"
+                                            style="background-color: #FFFF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
+                                            value="#57FF33">
+                                        <label for="color6" class="color-picker-label"
+                                            style="background-color: #57FF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
+                                            value="#FF3357">
+                                        <label for="color7" class="color-picker-label"
+                                            style="background-color: #FF3357;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
+                                            value="#33FFF5">
+                                        <label for="color8" class="color-picker-label"
+                                            style="background-color: #33FFF5;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
+                                            value="#F533FF">
+                                        <label for="color9" class="color-picker-label"
+                                            style="background-color: #F533FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
+                                            value="#FFAA33">
+                                        <label for="color10" class="color-picker-label"
+                                            style="background-color: #FFAA33;"></label>
+                                    </div>
 
-                                    <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
-                                        value="#57FF33">
-                                    <label for="color6" class="color-picker-label"
-                                        style="background-color: #57FF33;"></label>
-
-                                    <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
-                                        value="#FF3357">
-                                    <label for="color7" class="color-picker-label"
-                                        style="background-color: #FF3357;"></label>
-
-                                    <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
-                                        value="#33FFF5">
-                                    <label for="color8" class="color-picker-label"
-                                        style="background-color: #33FFF5;"></label>
-
-                                    <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
-                                        value="#F533FF">
-                                    <label for="color9" class="color-picker-label"
-                                        style="background-color: #F533FF;"></label>
-
-                                    <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
-                                        value="#FFAA33">
-                                    <label for="color10" class="color-picker-label"
-                                        style="background-color: #FFAA33;"></label>
                                 </div>
 
-                            </div>
-
-                            <div class="modal-footer border-0 p-0 pt-3">
-                                <button type="submit"
-                                    class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
-                                    categoria</button>
-                            </div>
-                        </form>
+                                <div class="modal-footer border-0 p-0 pt-3">
+                                    <button type="submit"
+                                        class="btn btn-primary rounded botao border-0 py-2 px-4">Cadastrar
+                                        categoria</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-</main>
+            <!-- FIM MODAL CADASTRAR CATEGORIA -->
+
+            <!-- Inicio modal Editar categoria -->
+
+            <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategoria"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                    <div class="modal-content border-0">
+                        <div class="modal-header text-white">
+                            <h1 class="modal-title p-1" id="modalEditarCategoria">Editar categoria</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <input type="hidden" name="id" id="edit-categoria-id">
+                        
+                        <div class="modal-body">
+
+                            <form action="edit">
+
+                                <div class="mb-3 div-form">
+
+                                    <div class="w-100">
+                                        <label for="nome-categoria" class="col-form-label">Nome <span
+                                                class="form-span">*</span></label>
+                                        <input type="text" class="form-control" id="edit-nome-categoria"
+                                            placeholder="Digite um nome para sua categoria" required>
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-3 div-form">
+
+                                    <div class>
+                                        <label for="produto-marca" class="col-form-label">Nome <span
+                                                class="form-span">*</span></label>
+                                    </div>
+
+                                    <div class="w-100">
+
+                                        <input type="radio" name="selectedColor" id="edit-color1" class="color-picker-input"
+                                            value="#FF5733" required>
+                                        <label for="color1" class="color-picker-label"
+                                            style="background-color: #FF5733;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color2" class="color-picker-input"
+                                            value="#33FF57">
+                                        <label for="color2" class="color-picker-label"
+                                            style="background-color: #33FF57;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color3" class="color-picker-input"
+                                            value="#3357FF">
+                                        <label for="color3" class="color-picker-label"
+                                            style="background-color: #3357FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color4" class="color-picker-input"
+                                            value="#FF33FF">
+                                        <label for="color4" class="color-picker-label"
+                                            style="background-color: #FF33FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color5" class="color-picker-input"
+                                            value="#FFFF33">
+                                        <label for="color5" class="color-picker-label"
+                                            style="background-color: #FFFF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color6" class="color-picker-input"
+                                            value="#57FF33">
+                                        <label for="color6" class="color-picker-label"
+                                            style="background-color: #57FF33;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color7" class="color-picker-input"
+                                            value="#FF3357">
+                                        <label for="color7" class="color-picker-label"
+                                            style="background-color: #FF3357;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color8" class="color-picker-input"
+                                            value="#33FFF5">
+                                        <label for="color8" class="color-picker-label"
+                                            style="background-color: #33FFF5;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color9" class="color-picker-input"
+                                            value="#F533FF">
+                                        <label for="color9" class="color-picker-label"
+                                            style="background-color: #F533FF;"></label>
+    
+                                        <input type="radio" name="selectedColor" id="edit-color10" class="color-picker-input"
+                                            value="#FFAA33">
+                                        <label for="color10" class="color-picker-label"
+                                            style="background-color: #FFAA33;"></label>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer border-0 p-0 pt-3">
+                                    <button type="submit"
+                                        class="btn btn-primary rounded botao border-0 py-2 px-4">Editar categoria
+                                        </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <script>
+            const modalEditarCategoria = document.getElementById("modalEditarCategoria");
+            const inputEditId = document.getElementById("edit-categoria-id");
+            const inputEditNome = document.getElementById("edit-nome-categoria");
+
+            function editarDadosCategoria(id) {
+                const CategoriaTabela = document.querySelector(`tr[categoria-id="${id}"]`);
+
+                const dadosCategoria ={
+                    id: linhaTabela.cells[0].textContent.trim(),
+                    nome: linhaTabela.cells[1].textContent.trim(),
+                }
+                
+                inputEditId.value = dadosCategoria.id;
+		        inputEditNome.value = dadosCategoria.nome;
+            }
+
+            modalEditarProduto.addEventListener('hide.bs.modal', event => {
+                inputEditId.value = null;
+                inputEditNome.value = null;
+            })
+        </script>
+
+    </main>
