@@ -1,6 +1,4 @@
 function openModalWithHash(hash) {
-	window.location.hash = "";
-
 	if (!document.querySelector(hash)) {
 		return;
 	}
