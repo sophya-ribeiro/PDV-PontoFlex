@@ -22,17 +22,17 @@ class CategoriasSeed extends AbstractSeed
             [
                 'id' => 1,
                 'nome' => 'Insumos',
-                'cor' => 'azul'
+                'cor' => '#dd4baf'
             ],
             [
                 'id' => 2,
                 'nome' => 'Acessórios',
-                'cor' => 'amarelo'
+                'cor' => '#bd4bdd'
             ],
             [
                 'id' => 3,
                 'nome' => 'Peças',
-                'cor' => 'vermelho'
+                'cor' => '#774bdd'
             ]
         ];
 
