@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,23 +18,9 @@ class CategoriasController extends AppController
      */
     public function index()
     {
-        $query = $this->Categorias->find();
-        $categorias = $this->paginate($query);
+        $categorias = $this->Categorias->find();
 
         $this->set(compact('categorias'));
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Categoria id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $categoria = $this->Categorias->get($id, contain: ['Produtos']);
-        $this->set(compact('categoria'));
     }
 
     /**
