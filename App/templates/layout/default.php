@@ -41,7 +41,7 @@ function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
 
     <?= $this->Html->css(['style', 'default', 'bootstrap.min']) ?>
 
-    <?= $this->Html->script(['bootstrap.bundle.min']) ?>
+    <?= $this->Html->script(['bootstrap.bundle.min', 'main']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
