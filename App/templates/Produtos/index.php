@@ -13,7 +13,7 @@
 			<ul class="secao-navegacao m-0 p-0">
 				<li><a class="itens-nav" href="#">Produtos cadastrados</a></li>
 				<li>
-					<a class="itens-nav" data-bs-toggle="modal" data-bs-target="#modalCadastrarProduto">
+					<a class="itens-nav" data-bs-toggle="modal" data-bs-target="#modal-cadastrar-produto">
 						Cadastrar produto
 					</a>
 				</li>
@@ -22,7 +22,7 @@
 			<h2 class="subt-secao pt-4">Categorias</h2>
 
 			<ul class="secao-navegacao m-0 p-0">
-				<li><a class="itens-nav" href="#">Categorias cadastradas</a></li>
+				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Categorias', 'action' => 'index']) ?>">Categorias cadastradas</a></li>
 				<li><a class="itens-nav" href="#">Cadastrar categoria</a></li>
 			</ul>
 		</nav>
@@ -123,14 +123,14 @@
 	</div>
 </section>
 
-<!-- Início modalCadastrarProtuto -->
-<div class="modal fade" id="modalCadastrarProduto" tabindex="-1" aria-labelledby="modalCadastrarProduto"
+<!-- Início modal-cadastrar-produto -->
+<div class="modal fade" id="modal-cadastrar-produto" tabindex="-1" aria-labelledby="modal-cadastrar-produto"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
 
 		<div class="modal-content border-0">
 			<div class="modal-header text-white">
-				<h1 class="modal-title p-1" id="modalCadastrarProduto">Novo produto</h1>
+				<h1 class="modal-title p-1" id="modal-cadastrar-produto">Novo produto</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
@@ -203,7 +203,7 @@
 
 				<div class="modal-footer border-0 p-0 pt-3">
 					<?= $this->Form->input('submit', [
-						'class' => 'btn btn-primary rounded botao-cadastrar border-0 py-2 px-',
+						'class' => 'btn btn-primary rounded botao border-0 py-2 px-',
 						'type' => 'submit',
 						'value' => 'Cadastrar produto'
 					]) ?>
@@ -297,7 +297,7 @@
 
 				<div class="modal-footer border-0 p-0 pt-3">
 					<?= $this->Form->input('submit', [
-						'class' => 'btn btn-primary rounded botao-cadastrar border-0 py-2 px-',
+						'class' => 'btn btn-primary rounded botao border-0 py-2 px-',
 						'type' => 'submit',
 						'value' => 'Editar produto'
 					]) ?>
