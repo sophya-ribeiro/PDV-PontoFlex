@@ -1,5 +1,9 @@
 /* ------- HTML E BODY ------ */
 
+* {
+	font-family: "Poppins", sans-serif;
+}
+
 body,
 html {
 	width: 100%;

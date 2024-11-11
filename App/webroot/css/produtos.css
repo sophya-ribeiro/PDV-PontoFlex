@@ -62,32 +62,28 @@
     flex-direction: column;
 }
 
-.pagination > li > a
-{
+.pagination>li>a {
     background-color: white;
     color: #000000;
     border: none;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover
-{
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
     color: #313131;
     background-color: #eee;
     border-color: #ddd;
 }
 
-.pagination > .active > a
-{
+.pagination>.active>a {
     color: rgb(0, 0, 0);
     background-color: #7dc99b99 !important;
     border: none !important;
 }
 
-.pagination > .active > a:hover
-{
+.pagination>.active>a:hover {
     color: rgb(0, 0, 0);
     background-color: #7dc99b99 !important;
     border: none !important;
@@ -122,7 +118,7 @@
     font-size: 1.2rem !important;
 }
 
-.div-form{
+.div-form {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -130,44 +126,44 @@
     width: 100%;
 }
 
-input{
+input, .form-select {
     background-color: #f3f3f3 !important;
     border: none !important;
     padding: 0.55rem !important;
 }
 
-.form-span{
+.form-span {
     color: red;
     font-weight: 400;
     font-size: 15px;
 }
 
-.w-nome{
+.w-nome {
     width: 60%;
 }
 
-.w-categoria{
+.w-categoria {
     width: 35%;
 }
 
-.w-dropdown{
-   width: 100% !important;
-   justify-content: space-between;
+.w-dropdown {
+    width: 100% !important;
+    justify-content: space-between;
 }
 
-.w-marca{
+.w-marca {
     width: 40%;
 }
 
-.w-modelo{
+.w-modelo {
     width: 35%;
 }
 
-.w-lote{
+.w-lote {
     width: 20%;
 }
 
-.botao-categoria{
+.botao-categoria {
     width: 90% !important;
 }
 
@@ -183,12 +179,16 @@ input{
     text-decoration: none !important;
 }
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
     color: black !important;
-    background-color:  #d4d4d4 !important;
+    background-color: #d4d4d4 !important;
 }
 
-.validade-texto{
+.validade-texto {
     font-size: 11px;
     text-align: start;
     padding-top: 5px;
