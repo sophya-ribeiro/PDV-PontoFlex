@@ -1,4 +1,5 @@
 <?= $this->Html->css('produtos') ?>
+<?= $this->Html->script('produtos', ['defer']) ?>
 
 <div class="container-lateral">
 	<div class="container-lateral-nav">
@@ -90,7 +91,7 @@
 						<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
 						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 						<td class="py-3">
-							<a data-bs-toggle="modal" data-bs-target="#modalEditarProduto" onclick="editarDadosProduto(<?= $produto->id ?>)"><ion-icon name="create" class="create-icon"></ion-icon></a>
+							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)"><ion-icon name="create" class="create-icon"></ion-icon></a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -213,16 +214,16 @@
 		</div>
 	</div>
 </div>
-<!-- Fim modalCadastrarProtuto -->
+<!-- Fim modal-cadastrar-produto -->
 
 
-<!-- Início modalEditarProduto -->
-<div class="modal fade" id="modalEditarProduto" tabindex="-1" aria-labelledby="modalEditarProduto"
+<!-- Início modal-editar-produto -->
+<div class="modal fade" id="modal-editar-produto" tabindex="-1" aria-labelledby="modal-editar-produto"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
 		<div class="modal-content border-0">
 			<div class="modal-header text-white">
-				<h1 class="modal-title p-1" id="modalEditarProduto">Editar produto</h1>
+				<h1 class="modal-title p-1" id="modal-editar-produto">Editar produto</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
@@ -307,65 +308,4 @@
 		</div>
 	</div>
 </div>
-<!-- Fim modalEditarProduto -->
-
-<script>
-	const modalEditarProduto = document.getElementById("modalEditarProduto");
-
-	const inputEditId = document.getElementById("edit-produto-id");
-	const inputEditNome = document.getElementById("edit-produto-nome");
-	const inputEditCategoria = document.getElementById("edit-produto-categoria");
-	const inputEditMarca = document.getElementById("edit-produto-marca");
-	const inputEditModelo = document.getElementById("edit-produto-modelo");
-	const inputEditLote = document.getElementById("edit-produto-lote");
-	const inputEditCodigo = document.getElementById("edit-produto-codigo");
-	const inputEditPreco = document.getElementById("edit-produto-preco");
-	const inputEditQuantidade = document.getElementById("edit-produto-quantidade");
-	const inputEditValidade = document.getElementById("edit-produto-validade");
-
-	function editarDadosProduto(id) {
-		const linhaTabela = document.querySelector(`tr[data-produto-id="${id}"]`);
-
-		const dadosProduto = {
-			id: linhaTabela.cells[0].textContent.trim(),
-			categoria: linhaTabela.cells[1].textContent.trim(),
-			codigo: linhaTabela.cells[2].textContent.trim(),
-			nome: linhaTabela.cells[3].textContent.trim(),
-			marca: linhaTabela.cells[4].textContent.trim(),
-			modelo: linhaTabela.cells[5].textContent.trim(),
-			lote: linhaTabela.cells[6].textContent.trim(),
-			quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
-			precoUnitario: linhaTabela.cells[8].textContent.replace("R$", "").trim(),
-			dataValidade: linhaTabela.cells[9].textContent.trim()
-		};
-
-		inputEditId.value = dadosProduto.id;
-		inputEditNome.value = dadosProduto.nome;
-		inputEditCategoria.value = dadosProduto.categoria;
-		inputEditMarca.value = dadosProduto.marca;
-		inputEditModelo.value = dadosProduto.modelo;
-		inputEditLote.value = dadosProduto.lote;
-		inputEditCodigo.value = dadosProduto.codigo;
-		inputEditPreco.value = dadosProduto.precoUnitario;
-		inputEditQuantidade.value = dadosProduto.quantidadeEstoque;
-
-		if (dadosProduto.dataValidade != "-") {
-			dadosProduto.dataValidade = new Date(dadosProduto.dataValidade).toISOString().split('T')[0];
-
-			inputEditValidade.value = dadosProduto.dataValidade;
-		};
-	}
-
-	modalEditarProduto.addEventListener('hide.bs.modal', event => {
-		inputEditId.value = null;
-		inputEditCategoria.value = null;
-		inputEditNome.value = null;
-		inputEditCategoria.value = null;
-		inputEditMarca.value = null;
-		inputEditModelo.value = null;
-		inputEditLote.value = null;
-		inputEditCodigo.value = null;
-		inputEditPreco.value = null;
-		inputEditQuantidade.value = null;
-	})
-</script>
+<!-- Fim modal-editar-produto -->
