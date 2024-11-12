@@ -23,7 +23,7 @@
             <h2 class="subt-secao pt-4">Categorias</h2>
 
             <ul class="secao-navegacao m-0 p-0">
-                <li><a class="itens-nav" href="#">Categorias cadastradas</a></li>
+                <li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Categorias', 'action' => 'index']) ?>">Categorias cadastradas</a></li>
                 <li><a class="itens-nav" data-bs-toggle="modal"
                         data-bs-target="#modal-cadastrar-categoria">Cadastrar categoria</a></li>
             </ul>
@@ -34,7 +34,35 @@
 </div>
 
 <section class="container-central">
-
+    <div id="container-categorias">
+        <?php foreach ($categorias as $categoria) : ?>
+            <div
+                data-categoria-id="<?= $categoria->id ?>"
+                data-categoria-nome="<?= $categoria->nome ?>"
+                data-categoria-cor="<?= $categoria->cor ?>"
+                class="categoria-item text-white d-flex flex-column p-3"
+                style="background-color: <?= $categoria->cor ?>;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="m-0"><?= $categoria->nome ?></h3>
+                    <a data-bs-toggle="modal" data-bs-target="#modal-editar-categoria" onclick="editarDadosCategoria(<?= $categoria->id ?>)">
+                        <ion-icon name="create" class="categoria-icon" title="Editar categoria"></ion-icon>
+                    </a>
+                </div>
+                <div class="d-flex mt-auto ms-auto">
+                    <?= $this->Form->create(null, [
+                        'url' => [
+                            'controller' => 'Categorias',
+                            'action' => 'delete',
+                            $categoria->id
+                        ],
+                        'type' => 'delete'
+                    ]); ?>
+                    <button class="bg-transparent p-0 border-0" type="submit"><ion-icon name="trash-outline" class="categoria-icon text-white" title="Apagar categoria"></ion-icon></button>
+                    <?= $this->Form->end(); ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </section>
 
 <!-- Início modal-cadastrar-categoria -->
@@ -49,88 +77,87 @@
             </div>
 
             <div class="modal-body px-5 py-4">
-                <form>
-                    <div class="mb-4 div-form">
-                        <label for="produto-marca" class="col-form-label mb-1">Nome <span
-                                class="form-span">*</span></label>
-                        <input type="text" class="form-control" id="produto-marca"
-                            placeholder="Digite o nome da categoria" required>
+                <?= $this->Form->create(null, [
+                    'url' => [
+                        'controller' => 'Categorias',
+                        'action' => 'add'
+                    ],
+                    'type' => 'post'
+                ]); ?>
+                <div class="mb-4 div-form">
+                    <label for="categoria-nome" class="col-form-label mb-1">Nome <span
+                            class="form-span">*</span></label>
+                    <input type="text" class="form-control" name="nome" id="categoria-nome"
+                        placeholder="Digite o nome da categoria" required>
+                </div>
+
+                <div class="mb-3 div-form">
+                    <div class>
+                        <p class="col-form-label mb-1">Selecione uma cor para a categoria <span class="form-span">*</span></p>
                     </div>
 
-                    <div class="mb-3 div-form">
-                        <div class>
-                            <label for="produto-marca" class="col-form-label mb-1">Selecione uma cor para a categoria <span class="form-span">*</span>
-                            </label>
-                        </div>
+                    <?= $this->element('categorias/color-picker'); ?>
+                </div>
 
-                        <div class="w-100 d-flex justify-content-between">
-                            <input type="radio" name="selectedColor" id="color1" class="color-picker-input"
-                                value="#dd4baf" required>
-                            <label for="color1" class="color-picker-label"
-                                style="background-color: #dd4baf;"></label>
-
-                            <input type="radio" name="selectedColor" id="color2" class="color-picker-input"
-                                value="#bd4bdd">
-                            <label for="color2" class="color-picker-label"
-                                style="background-color: #bd4bdd;"></label>
-
-                            <input type="radio" name="selectedColor" id="color3" class="color-picker-input"
-                                value="#774bdd">
-                            <label for="color3" class="color-picker-label"
-                                style="background-color: #774bdd;"></label>
-
-                            <input type="radio" name="selectedColor" id="color4" class="color-picker-input"
-                                value="#3e4cd2">
-                            <label for="color4" class="color-picker-label"
-                                style="background-color: #3e4cd2;"></label>
-
-                            <input type="radio" name="selectedColor" id="color5" class="color-picker-input"
-                                value="#3e80d2">
-                            <label for="color5" class="color-picker-label"
-                                style="background-color: #3e80d2;"></label>
-
-                            <input type="radio" name="selectedColor" id="color6" class="color-picker-input"
-                                value="#218a99">
-                            <label for="color6" class="color-picker-label"
-                                style="background-color: #218a99;"></label>
-
-                            <input type="radio" name="selectedColor" id="color7" class="color-picker-input"
-                                value="#218a99">
-                            <label for="color7" class="color-picker-label"
-                                style="background-color: #218a99;"></label>
-
-                            <input type="radio" name="selectedColor" id="color8" class="color-picker-input"
-                                value="#1a9f49">
-                            <label for="color8" class="color-picker-label"
-                                style="background-color: #1a9f49;"></label>
-
-                            <input type="radio" name="selectedColor" id="color9" class="color-picker-input"
-                                value="#899a16">
-                            <label for="color9" class="color-picker-label"
-                                style="background-color: #899a16;"></label>
-
-                            <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
-                                value="#c96516">
-                            <label for="color10" class="color-picker-label"
-                                style="background-color: #c96516;"></label>
-
-                            <input type="radio" name="selectedColor" id="color10" class="color-picker-input"
-                                value="#db351b">
-                            <label for="color10" class="color-picker-label"
-                                style="background-color: #db351b;"></label>
-                        </div>
-
-                    </div>
-
-                    <div class="modal-footer border-0 p-0 pt-3">
-                        <button type="submit"
-                            class="btn btn-primary rounded botao border-0 py-2 px-4">
-                            Cadastrar categoria
-                        </button>
-                    </div>
-                </form>
+                <div class="modal-footer border-0 p-0 pt-3">
+                    <button type="submit"
+                        class="btn btn-primary rounded botao border-0 py-2 px-4">
+                        Cadastrar categoria
+                    </button>
+                </div>
+                <?= $this->Form->end(); ?>
             </div>
         </div>
     </div>
 </div>
 <!-- Fim modal-cadastrar-categoria -->
+
+<!-- Início modal-editar-categoria -->
+<div class="modal fade" id="modal-editar-categoria" tabindex="-1" aria-labelledby="modal-editar-categoria"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content border-0">
+            <div class="modal-header text-white">
+                <h1 class="modal-title p-1" id="modal-editar-categoria">Editar categoria</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body px-5 py-4">
+                <?= $this->Form->create(null, [
+                    'url' => [
+                        'controller' => 'Categorias',
+                        'action' => 'edit'
+                    ],
+                    'type' => 'post'
+                ]); ?>
+
+                <input type="hidden" name="id" id="editar-categoria-id">
+
+                <div class="mb-4 div-form">
+                    <label for="editar-categoria-nome" class="col-form-label mb-1">Nome <span
+                            class="form-span">*</span></label>
+                    <input type="text" class="form-control" name="nome" id="editar-categoria-nome"
+                        placeholder="Digite o nome da categoria" required>
+                </div>
+
+                <div class="mb-3 div-form">
+                    <div class>
+                        <p class="col-form-label mb-1">Selecione uma cor para a categoria <span class="form-span">*</span></p>
+                    </div>
+
+                    <?= $this->element('categorias/color-picker', ['inputPrefix' => 'editar']); ?>
+                </div>
+
+                <div class="modal-footer border-0 p-0 pt-3">
+                    <button type="submit"
+                        class="btn btn-primary rounded botao border-0 py-2 px-4">
+                        Editar categoria
+                    </button>
+                </div>
+                <?= $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fim modal-editar-categoria -->

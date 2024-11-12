@@ -1,3 +1,33 @@
+/* ----- CONTAINER CENTRAL ----- */
+.container-central {
+	margin-top: 2rem;
+	padding: 0rem 0rem 1rem 1rem;
+	width: 100%;
+}
+
+#container-categorias {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.categoria-item {
+	width: 250px;
+	height: 120px;
+	border-radius: 8px;
+}
+
+.categoria-item h3 {
+	font-size: 18px;
+}
+
+.categoria-icon {
+	font-size: 22px;
+	cursor: pointer;
+}
+
 /* ---------- MODAIS ---------- */
 
 .modal-content {
@@ -112,5 +142,8 @@ input {
 }
 
 .color-picker-input {
-	display: none;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	z-index: -1;
 }

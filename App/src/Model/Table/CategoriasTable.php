@@ -1,12 +1,17 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use DomainException;
+
+use function PHPUnit\Framework\throwException;
 
 /**
  * Categorias Model
@@ -69,5 +74,36 @@ class CategoriasTable extends Table
             ->notEmptyString('cor');
 
         return $validator;
+    }
+
+    public function salvar($requestData)
+    {
+        $categoria = $this->newEmptyEntity();
+        $categoria = $this->patchEntity($categoria, $requestData);
+
+        return $this->save($categoria);
+    }
+
+    public function editar($id, $requestData)
+    {
+        $categoria = $this->get($id);
+        $categoria = $this->patchEntity($categoria, $requestData);
+
+        return $this->save($categoria);
+    }
+
+    public function deleteById($id): bool
+    {
+        $quantidadeProdutosCategoria = $this->Produtos->find()->where(['categoria_id' => $id])->count();
+
+        if ($quantidadeProdutosCategoria > 0) {
+            throw new DomainException("Não é possível apagar uma categoria com produtos cadastrados.", 1);
+        }
+
+        $categoria = $this->get($id);
+
+        $this->delete($categoria);
+
+        return true;
     }
 }
