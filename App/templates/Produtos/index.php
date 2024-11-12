@@ -12,7 +12,7 @@
 			<h2 class="subt-secao">Produtos</h2>
 
 			<ul class="secao-navegacao m-0 p-0">
-				<li><a class="itens-nav" href="#">Produtos cadastrados</a></li>
+				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Produtos', 'action' => 'index']) ?>">Produtos cadastrados</a></li>
 				<li>
 					<a class="itens-nav" data-bs-toggle="modal" data-bs-target="#modal-cadastrar-produto">
 						Cadastrar produto
@@ -24,7 +24,7 @@
 
 			<ul class="secao-navegacao m-0 p-0">
 				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Categorias', 'action' => 'index']) ?>">Categorias cadastradas</a></li>
-				<li><a class="itens-nav" href="#">Cadastrar categoria</a></li>
+				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Categorias', 'action' => 'index', '#' => 'modal-cadastrar-categoria']) ?>">Cadastrar categoria</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -128,14 +128,13 @@
 <div class="modal fade" id="modal-cadastrar-produto" tabindex="-1" aria-labelledby="modal-cadastrar-produto"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
-
 		<div class="modal-content border-0">
 			<div class="modal-header text-white">
 				<h1 class="modal-title p-1" id="modal-cadastrar-produto">Novo produto</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
-			<div class="modal-body">
+			<div class="modal-body px-5 py-4">
 				<?= $this->Form->create(null, [
 					'url' => [
 						'controller' => 'Produtos',
@@ -227,7 +226,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
-			<div class="modal-body">
+			<div class="modal-body px-5 py-4">
 				<?= $this->Form->create(null, [
 					'url' => [
 						'controller' => 'Produtos',
