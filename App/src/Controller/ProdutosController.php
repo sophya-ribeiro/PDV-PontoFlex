@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Utility\CurrencyHelper;
+
 /**
  * Produtos Controller
  *
@@ -54,7 +56,7 @@ class ProdutosController extends AppController
     {
         if ($this->request->is('post')) {
             $requestData = $this->request->getData();
-            $requestData['preco_unitario'] = floatval(str_replace('.', '', $requestData['preco_unitario']));
+            $requestData['preco_unitario'] = CurrencyHelper::brlToFloat($requestData['preco_unitario']);
 
             $produto = $this->Produtos->newEmptyEntity();
             $produto = $this->Produtos->patchEntity($produto, $requestData);
@@ -82,7 +84,7 @@ class ProdutosController extends AppController
     {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $requestData = $this->request->getData();
-            $requestData['preco_unitario'] = floatval(str_replace('.', '', $requestData['preco_unitario']));
+            $requestData['preco_unitario'] = CurrencyHelper::brlToFloat($requestData['preco_unitario']);
 
             $produto = $this->Produtos->get($requestData['id']);
             $produto = $this->Produtos->patchEntity($produto, $requestData);
