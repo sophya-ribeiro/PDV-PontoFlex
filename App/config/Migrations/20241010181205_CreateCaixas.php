@@ -31,7 +31,7 @@ class CreateCaixas extends AbstractMigration
 
         $table->addColumn('instante_fechamento', 'datetime', [
             'default' => null,
-            'null' => false
+            'null' => true
         ]);
 
         $table->addColumn('operador_funcionario_cpf', 'string', [

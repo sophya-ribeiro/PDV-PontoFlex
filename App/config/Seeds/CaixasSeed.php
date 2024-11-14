@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Model\Entity\Venda;
 use Migrations\AbstractSeed;
 
 

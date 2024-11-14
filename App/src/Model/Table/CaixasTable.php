@@ -1,12 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Caixa;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use DomainException;
 
 /**
  * Caixas Model
@@ -67,8 +70,7 @@ class CaixasTable extends Table
 
         $validator
             ->dateTime('instante_fechamento')
-            ->requirePresence('instante_fechamento', 'create')
-            ->notEmptyDateTime('instante_fechamento');
+            ->allowEmptyDateTime('instante_fechamento');
 
         $validator
             ->scalar('operador_funcionario_cpf')
@@ -77,5 +79,35 @@ class CaixasTable extends Table
             ->notEmptyString('operador_funcionario_cpf');
 
         return $validator;
+    }
+
+    public function findCaixaAbertoPorCpf(string $operadorCpf): Caixa|null
+    {
+        $caixa = $this->find()
+            ->where([
+                'instante_fechamento IS' => null,
+                'operador_funcionario_cpf' => $operadorCpf
+            ])
+            ->first();
+
+        return $caixa;
+    }
+
+    public function abrirCaixa(string $operadorCpf): Caixa
+    {
+        if ($this->findCaixaAbertoPorCpf($operadorCpf)) {
+            throw new DomainException("O caixa já está aberto.", 1);
+        }
+
+        $dataAtual = date("Y-m-d H:i:s");
+
+        $caixa = $this->newEntity([
+            'fundo_troco' => 0,
+            'instante_abertura' => $dataAtual,
+            'instante_fechamento' => null,
+            'operador_funcionario_cpf' => $operadorCpf
+        ]);
+
+        return $this->saveOrFail($caixa);
     }
 }

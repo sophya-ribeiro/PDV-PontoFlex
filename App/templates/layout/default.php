@@ -60,10 +60,10 @@ function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
         <nav>
             <ul class="m-0">
                 <li>
-                    <a class="<?= navItemAtivoOuInativo("produtos", $currentRoute) ?>" href="/produtos">Estoque</a>
+                    <a class="<?= navItemAtivoOuInativo("produtos", $currentRoute) ?>" href="<?= $this->Url->build(['controller' => 'Produtos', 'action' => 'index']) ?>">Estoque</a>
                 </li>
                 <li>
-                    <a class="<?= navItemAtivoOuInativo("caixas", $currentRoute) ?>" href="#">Caixa</a>
+                    <a class="<?= navItemAtivoOuInativo("caixas", $currentRoute) ?>" href="<?= $this->Url->build(['controller' => 'Caixas', 'action' => 'index']) ?>">Caixa</a>
                 </li>
                 <li>
                     <a class="<?= navItemAtivoOuInativo("relatorios", $currentRoute) ?>" href="#">Relatórios</a>
