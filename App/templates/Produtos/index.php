@@ -32,11 +32,13 @@
 	<?= $this->element('default/footer'); ?>
 </div>
 
+<!--BUSCAR PRODUTO AQUI 88888888888888888888888888888888888888-->
 <section class="container-central">
 	<div class="busca m-0">
 		<div class="busca-botao">
+			<form action="ProdutosController.php" method="get">
 			<input class="form-control border rounded-pill busca-input" type="text" id="example-search-input" value=""
-				placeholder="Buscar produto...">
+				placeholder="Buscar produto..."></form>
 			<ion-icon name="search" class="search-icon"></ion-icon>
 		</div>
 
