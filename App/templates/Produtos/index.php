@@ -32,13 +32,19 @@
 	<?= $this->element('default/footer'); ?>
 </div>
 
-<!--BUSCAR PRODUTO AQUI 88888888888888888888888888888888888888-->
+<!--BUSCAR PRODUTO AQUI-->
 <section class="container-central">
 	<div class="busca m-0">
 		<div class="busca-botao">
-			<form action="ProdutosController.php" method="get">
-			<input class="form-control border rounded-pill busca-input" type="text" id="example-search-input" value=""
-				placeholder="Buscar produto..."></form>
+			<?= $this->Form->create(null, ['type' => 'get', 'class' => 'd-inline']) ?>
+			<?= $this->Form->control('query', [
+				'label' => false,
+				'class' => 'form-control border rounded-pill busca-input',
+				'placeholder' => 'Buscar produto...',
+				'id' => 'example-search-input',
+				'value' => $query ?? '' 
+			]) ?>
+			<?= $this->Form->end() ?>
 			<ion-icon name="search" class="search-icon"></ion-icon>
 		</div>
 
@@ -76,11 +82,10 @@
 					<th>Preço</th>
 					<th>Validade</th>
 					<th></th>
-				</tr>
 			</thead>
 
 			<tbody>
-				<?php foreach ($produtos as $produto) : ?>
+				<?php foreach ($produtos as $produto): ?>
 					<tr data-produto-id="<?= $produto->id ?>">
 						<td class="d-none"><?= $produto->id ?></td>
 						<td class="d-none"><?= $produto->categoria->id ?></td>
@@ -93,7 +98,9 @@
 						<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
 						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 						<td class="py-3">
-							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)"><ion-icon name="create" class="create-icon"></ion-icon></a>
+							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)">
+								<ion-icon name="create" class="create-icon"></ion-icon>
+							</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

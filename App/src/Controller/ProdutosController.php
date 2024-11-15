@@ -43,9 +43,26 @@ class ProdutosController extends AppController
         $categorias = $this->Produtos->Categorias->find('list')->all();
 
         $parametrosPaginacao = $produtos->pagingParams();
+        
+        // Para busca de produtos
+        $query = $this->request->getQuery('query');
+        
+        $busca = $this->Produtos->find();
+        
+        if (!empty($query)) {
+            $busca->where([
+                'OR' => [
+                    'Produtos.nome LIKE' => '%' . $query . '%',
+                    'Produtos.codigo LIKE' => '%' . $query . '%',
+                    ]
+                ]);
+        }
 
-        $this->set(compact('produtos', 'categorias', 'filtro', 'parametrosPaginacao'));
+        $produtos = $this->paginate($busca);
+        
+        $this->set(compact('produtos', 'categorias', 'filtro', 'parametrosPaginacao', 'query'));
     }
+
 
     /**
      * Add method
