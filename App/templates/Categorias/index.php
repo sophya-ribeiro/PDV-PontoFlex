@@ -44,8 +44,8 @@
                 style="background-color: <?= $categoria->cor ?>;">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="m-0"><?= $categoria->nome ?></h3>
-                    <a data-bs-toggle="modal" data-bs-target="#modal-editar-categoria" onclick="editarDadosCategoria(<?= $categoria->id ?>)">
-                        <ion-icon name="create" class="categoria-icon" title="Editar categoria"></ion-icon>
+                    <a data-bs-toggle="modal" data-bs-target="#modal-editar-categoria" onclick="editarDadosCategoria(<?= $categoria->id ?>)" title="Editar categoria">
+                        <ion-icon name="create" class="categoria-icon"></ion-icon>
                     </a>
                 </div>
                 <div class="d-flex mt-auto ms-auto">
@@ -73,7 +73,7 @@
         <div class="modal-content border-0">
             <div class="modal-header text-white">
                 <h1 class="modal-title p-1" id="modal-cadastrar-categoria">Nova categoria</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Fechar"></button>
             </div>
 
             <div class="modal-body px-5 py-4">

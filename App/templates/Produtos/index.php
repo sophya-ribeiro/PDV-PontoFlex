@@ -98,7 +98,7 @@
 						<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
 						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 						<td class="py-3">
-							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)">
+							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)" title="Editar produto">
 								<ion-icon name="create" class="create-icon"></ion-icon>
 							</a>
 						</td>
@@ -232,7 +232,7 @@
 		<div class="modal-content border-0">
 			<div class="modal-header text-white">
 				<h1 class="modal-title p-1" id="modal-editar-produto">Editar produto</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Fechar"></button>
 			</div>
 
 			<div class="modal-body px-5 py-4">
