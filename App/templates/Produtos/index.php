@@ -36,13 +36,12 @@
 <section class="container-central">
 	<div class="busca m-0">
 		<div class="busca-botao">
-			<?= $this->Form->create(null, ['type' => 'get', 'class' => 'd-inline']) ?>
+			<?= $this->Form->create(null, ['type' => 'get', 'class' => 'w-100']) ?>
 			<?= $this->Form->control('query', [
 				'label' => false,
 				'class' => 'form-control border rounded-pill busca-input',
 				'placeholder' => 'Buscar produto...',
-				'id' => 'example-search-input',
-				'value' => $query ?? '' 
+				'value' => $query ?? ''
 			]) ?>
 			<?= $this->Form->end() ?>
 			<ion-icon name="search" class="search-icon"></ion-icon>
@@ -107,29 +106,31 @@
 			</tbody>
 		</table>
 
-		<nav aria-label="Navegação de página exemplo">
-			<ul class="pagination justify-content-center">
-				<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
-					<a class="page-link"
-						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] - 1, 'filtro' => $filtro]]) ?>"
-						tabindex="<?= $parametrosPaginacao['hasPrevPage'] ? 0 : -1 ?>">
-						Anterior
-					</a>
-				</li>
+		<?php if (count($produtos) >= 10) : ?>
+			<nav aria-label="Navegação de página">
+				<ul class="pagination justify-content-center">
+					<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
+						<a class="page-link"
+							href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] - 1, 'filtro' => $filtro]]) ?>"
+							tabindex="<?= $parametrosPaginacao['hasPrevPage'] ? 0 : -1 ?>">
+							Anterior
+						</a>
+					</li>
 
-				<?php for ($i = 1; $i <= $parametrosPaginacao['pageCount']; $i++) : ?>
-					<li class="page-item <?= $parametrosPaginacao['currentPage'] == $i ? 'active' : '' ?>"><a class="page-link" href="<?= $this->Url->build(['?' => ['page' => $i, 'filtro' => $filtro]]) ?>"><?= $i ?></a></li>
-				<?php endfor; ?>
+					<?php for ($i = 1; $i <= $parametrosPaginacao['pageCount']; $i++) : ?>
+						<li class="page-item <?= $parametrosPaginacao['currentPage'] == $i ? 'active' : '' ?>"><a class="page-link" href="<?= $this->Url->build(['?' => ['page' => $i, 'filtro' => $filtro]]) ?>"><?= $i ?></a></li>
+					<?php endfor; ?>
 
-				<li class="page-item <?= $parametrosPaginacao['hasNextPage'] ? '' : 'disabled' ?>">
-					<a class="page-link"
-						href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] + 1, 'filtro' => $filtro]]) ?>"
-						tabindex="<?= $parametrosPaginacao['hasNextPage'] ? 0 : -1 ?>">
-						Próximo
-					</a>
-				</li>
-			</ul>
-		</nav>
+					<li class="page-item <?= $parametrosPaginacao['hasNextPage'] ? '' : 'disabled' ?>">
+						<a class="page-link"
+							href="<?= $this->Url->build(['?' => ['page' => $parametrosPaginacao['currentPage'] + 1, 'filtro' => $filtro]]) ?>"
+							tabindex="<?= $parametrosPaginacao['hasNextPage'] ? 0 : -1 ?>">
+							Próximo
+						</a>
+					</li>
+				</ul>
+			</nav>
+		<?php endif; ?>
 	</div>
 </section>
 
