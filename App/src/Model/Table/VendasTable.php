@@ -122,7 +122,7 @@ class VendasTable extends Table
     {
         return $this->find()
             ->contain(['VendasProdutos' => ['Produtos']])
-            ->orderByDesc('data_venda')
+            ->orderByDesc('id')
             ->all();
     }
 }
