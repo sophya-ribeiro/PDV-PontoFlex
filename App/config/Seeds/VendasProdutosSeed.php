@@ -30,16 +30,16 @@ class VendasProdutosSeed extends AbstractSeed
         $data = [
             [
                 'id' => 1,
-                'valor_venda' => 50.5,
-                'desconto' => 2,
+                'valor_venda' => 300,
+                'desconto' => 50,
                 'numero_unidades' => 3,
                 'produto_id' => 1,
                 'venda_id' => 1
             ],
             [
                 'id' => 2,
-                'valor_venda' => 700,
-                'desconto' => 0.5,
+                'valor_venda' => 60,
+                'desconto' => 0,
                 'numero_unidades' => 6,
                 'produto_id' => 2,
                 'venda_id' => 2
