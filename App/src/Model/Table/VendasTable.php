@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -13,6 +14,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\CaixasTable&\Cake\ORM\Association\BelongsTo $Caixas
  * @property \App\Model\Table\ProdutosTable&\Cake\ORM\Association\BelongsToMany $Produtos
+ * @property \App\Model\Table\VendasProdutosTable&\Cake\ORM\Association\HasMany $VendasProdutos
  *
  * @method \App\Model\Entity\Venda newEmptyEntity()
  * @method \App\Model\Entity\Venda newEntity(array $data, array $options = [])
@@ -48,11 +50,14 @@ class VendasTable extends Table
             'foreignKey' => 'caixa_id',
             'joinType' => 'INNER',
         ]);
+
         $this->belongsToMany('Produtos', [
             'foreignKey' => 'venda_id',
             'targetForeignKey' => 'produto_id',
             'joinTable' => 'vendas_produtos',
         ]);
+
+        $this->hasMany('VendasProdutos', ['foreignKey' => 'venda_id']);
     }
 
     /**
@@ -111,5 +116,13 @@ class VendasTable extends Table
         $rules->add($rules->existsIn(['caixa_id'], 'Caixas'), ['errorField' => 'caixa_id']);
 
         return $rules;
+    }
+
+    public function findVendasComVendasProdutos()
+    {
+        return $this->find()
+            ->contain(['VendasProdutos' => ['Produtos']])
+            ->orderByDesc('data_venda')
+            ->all();
     }
 }

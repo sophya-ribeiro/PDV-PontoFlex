@@ -11,9 +11,12 @@ namespace App\Controller;
  */
 class CaixasController extends AppController
 {
+    protected \App\Model\Table\VendasTable $Vendas;
+
     public function initialize(): void
     {
         parent::initialize();
+        $this->Vendas = $this->fetchTable('Vendas');
     }
 
     /**
@@ -26,20 +29,9 @@ class CaixasController extends AppController
         $cpfUsuario = $this->Authentication->getIdentity()->cpf;
         $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
 
-        $this->set(compact('caixaAberto'));
-    }
+        $vendas = $this->Vendas->findVendasComVendasProdutos();
 
-    /**
-     * View method
-     *
-     * @param string|null $id Caixa id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $caixa = $this->Caixas->get($id, contain: ['Vendas']);
-        $this->set(compact('caixa'));
+        $this->set(compact('caixaAberto', 'vendas'));
     }
 
     /**

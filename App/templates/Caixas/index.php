@@ -57,158 +57,49 @@ use Cake\I18n\DateTime;
 </div>
 
 <section class="container-central">
+	<?php foreach ($vendas as $venda) : ?>
+		<div class="container-venda">
+			<div class="container-venda-titulo">
+				<h1 class="venda-titulo p-0 m-0">Venda #<?= $venda->id ?> <span class="venda-status">Concluída</span></h1>
 
-	<div class="container-venda">
+				<p class="venda-texto p-0 m-0">R$ <?= number_format($venda->valor_total - $venda->desconto_total, 2, ",", ".") ?> - <?= $venda->forma_pagamento ?></p>
+				<p class="venda-texto p-0 m-0">
+					<?= (new DateTime($venda->data_venda))->format('d/m/Y') ?>
+				</p>
 
-		<div class="container-venda-titulo">
-			<h1 class="venda-titulo p-0 m-0">Venda #45 <span class="venda-status">Concluída</span></h1>
+				<a>
+					<ion-icon name="ellipsis-horizontal-sharp" class="ellipsis-icon"></ion-icon>
+				</a>
+			</div>
 
-			<p class="venda-texto p-0 m-0">R$ 248.729,47 - Cartão | Crédito</p>
-			<p class="venda-texto p-0 m-0">12/10/2024</p>
-			<a>
-				<ion-icon name="ellipsis-horizontal-sharp" class="ellipsis-icon"></ion-icon>
-			</a>
+			<div class="container-venda-itens rounded">
+				<table class="table rounded overflow-hidden table-borderless">
+					<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
+						<tr>
+							<th class="col-3">Item</th>
+							<th class="col-2">Marca</th>
+							<th>Modelo</th>
+							<th>Qtd.</th>
+							<th>Preço unitário</th>
+							<th>Preço total</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<?php foreach ($venda->vendas_produtos as $vendaProduto) : ?>
+							<tr>
+								<td class="tabela-texto"><?= $vendaProduto->produto->nome ?></td>
+								<td class="tabela-texto"><?= $vendaProduto->produto->marca ?></td>
+								<td class="tabela-texto"><?= $vendaProduto->produto->modelo ?></td>
+								<td class="tabela-texto"><?= $vendaProduto->numero_unidades ?></td>
+								<td class="tabela-texto">R$ <?= number_format($vendaProduto->valor_venda / $vendaProduto->numero_unidades, 2, ",", ".") ?></td>
+								<td class="tabela-texto">R$ <?= number_format($vendaProduto->valor_venda - $vendaProduto->desconto, 2, ",", ".") ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
-
-
-		<div class="container-venda-itens rounded">
-			<table class="table rounded overflow-hidden table-borderless">
-				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
-					<tr>
-						<th class="col-3">Item</th>
-						<th class="col-2">Marca</th>
-						<th>Modelo</th>
-						<th>Qtd.</th>
-						<th>Preço unitário</th>
-						<th>Preço total</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-
-	</div>
-
-	<div class="container-venda">
-
-		<div class="container-venda-titulo">
-			<h1 class="venda-titulo p-0 m-0">Venda #44 <span class="venda-status">Concluída</span></h1>
-
-			<p class="venda-texto p-0 m-0">R$ 248.729,47 - Cartão | Crédito</p>
-			<p class="venda-texto p-0 m-0">12/10/2024</p>
-			<a>
-				<ion-icon name="ellipsis-horizontal-sharp" class="ellipsis-icon"></ion-icon>
-			</a>
-		</div>
-
-
-		<div class="container-venda-itens rounded">
-			<table class="table rounded overflow-hidden table-borderless">
-				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
-					<tr>
-						<th class="col-3">Item</th>
-						<th class="col-2">Marca</th>
-						<th>Modelo</th>
-						<th>Qtd.</th>
-						<th>Preço unitário</th>
-						<th>Preço total</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-
-	</div>
-
-	<div class="container-venda">
-
-		<div class="container-venda-titulo">
-			<h1 class="venda-titulo p-0 m-0">Venda #43 <span class="venda-status">Concluída</span></h1>
-
-			<p class="venda-texto p-0 m-0">R$ 248.729,47 - Cartão | Crédito</p>
-			<p class="venda-texto p-0 m-0">12/10/2024</p>
-			<a>
-				<ion-icon name="ellipsis-horizontal-sharp" class="ellipsis-icon"></ion-icon>
-			</a>
-		</div>
-
-
-		<div class="container-venda-itens rounded">
-			<table class="table rounded overflow-hidden table-borderless">
-				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
-					<tr>
-						<th class="col-3">Item</th>
-						<th class="col-2">Marca</th>
-						<th>Modelo</th>
-						<th>Qtd.</th>
-						<th>Preço unitário</th>
-						<th>Preço total</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-
-					<tr>
-						<td class="tabela-texto">Carro Sedan</td>
-						<td class="tabela-texto">Hyundai</td>
-						<td class="tabela-texto">HB20s</td>
-						<td class="tabela-texto">100</td>
-						<td class="tabela-texto">R$ 234,00</td>
-						<td class="tabela-texto">R$ 23400,00</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-
-	</div>
+	<?php endforeach; ?>
 
 </section>
