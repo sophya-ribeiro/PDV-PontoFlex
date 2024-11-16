@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Routing\Router;
+
 /**
  * Caixas Controller
  *
@@ -35,12 +37,29 @@ class CaixasController extends AppController
     }
 
     /**
+     * Registar Venda method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function registrarVenda()
+    {
+        $cpfUsuario = $this->Authentication->getIdentity()->cpf;
+        $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
+
+        if (!$caixaAberto) {
+            return $this->render('caixa_fechado');
+        }
+    }
+
+    /**
      * Abrir caixa method
      *
      * @return \Cake\Http\Response|null|void Redirects to index.
      */
     public function abrirCaixa()
     {
+        $redirectAction = ($this->request->referer() == Router::url(['action' => 'registrarVenda'])) ? 'registrarVenda' : 'index';
+
         if ($this->request->is('post')) {
             $cpfUsuario = $this->Authentication->getIdentity()->cpf;
 
@@ -49,13 +68,13 @@ class CaixasController extends AppController
 
                 $this->Flash->success(__('Caixa aberto com sucesso.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => $redirectAction]);
             } catch (\Throwable $th) {
                 $this->Flash->error(__($th->getMessage()));
             }
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => $redirectAction]);
     }
 
     /**
@@ -65,6 +84,8 @@ class CaixasController extends AppController
      */
     public function fecharCaixa()
     {
+        $redirectAction = ($this->request->referer() == Router::url(['action' => 'registrarVenda'])) ? 'registrarVenda' : 'index';
+
         if ($this->request->is('post')) {
             $cpfUsuario = $this->Authentication->getIdentity()->cpf;
 
@@ -73,12 +94,12 @@ class CaixasController extends AppController
 
                 $this->Flash->success(__('Caixa fechado com sucesso.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => $redirectAction]);
             } catch (\Throwable $th) {
                 $this->Flash->error(__($th->getMessage()));
             }
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => $redirectAction]);
     }
 }

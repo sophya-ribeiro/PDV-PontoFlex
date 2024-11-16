@@ -18,8 +18,8 @@ use Cake\I18n\DateTime;
 			<h2 class="subt-secao">Vendas</h2>
 
 			<ul class="secao-navegacao m-0 p-0">
-				<li><a class="itens-nav">Vendas recentes</a></li>
-				<li><a class="itens-nav">Registrar venda</a></li>
+				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Caixas', 'action' => 'index']) ?>">Vendas recentes</a></li>
+				<li><a class="itens-nav" href="<?= $this->Url->build(['controller' => 'Caixas', 'action' => 'registrarVenda']) ?>">Registrar venda</a></li>
 			</ul>
 
 			<?php if ($caixaAberto) :
