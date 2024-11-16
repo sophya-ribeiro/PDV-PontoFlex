@@ -22,7 +22,7 @@ class ProdutosController extends AppController
     public function index()
     {
         $filtro = $this->request->getQuery('filtro');
-        $busca = $this->request->getQuery('busca');
+        $busca = trim($this->request->getQuery('busca'));
 
         if (!array_key_exists($filtro, Produto::$ordens)) {
             $filtro = 'Mais recentes';
@@ -30,12 +30,20 @@ class ProdutosController extends AppController
 
         $produtos = $this->Produtos->findProdutosPorFiltroBusca($filtro, $busca);
 
+        if ($produtos->count() <= 10 && $this->request->getQuery('page') > 1) {
+            return $this->redirect(['action' => 'index', '?' => [
+                'page' => 1,
+                'filtro' => $filtro,
+                'busca' => $busca
+            ]]);
+        }
+
         $produtos =  $this->paginate($produtos, ['limit' => 10]);
         $categorias = $this->Produtos->Categorias->find('list')->all();
 
         $parametrosPaginacao = $produtos->pagingParams();
 
-        $this->set(compact('produtos', 'categorias', 'filtro', 'parametrosPaginacao'));
+        $this->set(compact('produtos', 'categorias', 'filtro', 'busca', 'parametrosPaginacao'));
     }
 
 
