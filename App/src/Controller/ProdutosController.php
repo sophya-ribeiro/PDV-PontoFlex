@@ -22,7 +22,7 @@ class ProdutosController extends AppController
     public function index()
     {
         $filtro = $this->request->getQuery('filtro');
-        $busca = trim($this->request->getQuery('busca'));
+        $busca = trim($this->request->getQuery('busca') ?? '');
 
         if (!array_key_exists($filtro, Produto::$ordens)) {
             $filtro = 'Mais recentes';
