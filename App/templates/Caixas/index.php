@@ -62,8 +62,8 @@ use Cake\I18n\DateTime;
 			<div class="container-venda-titulo">
 				<h1 class="venda-titulo p-0 m-0">Venda #<?= $venda->id ?> <span class="venda-status">Concluída</span></h1>
 
-				<p class="venda-texto p-0 m-0">R$ <?= number_format($venda->valor_total - $venda->desconto_total, 2, ",", ".") ?> - <?= $venda->forma_pagamento ?></p>
-				<p class="venda-texto p-0 m-0">
+				<p class="venda-texto p-0 m-0 ms-auto">R$ <?= number_format($venda->valor_total - $venda->desconto_total, 2, ",", ".") ?> - <?= $venda->forma_pagamento ?></p>
+				<p class="venda-texto p-0 m-0 mx-5">
 					<?= (new DateTime($venda->data_venda))->format('d/m/Y') ?>
 				</p>
 
@@ -102,4 +102,11 @@ use Cake\I18n\DateTime;
 		</div>
 	<?php endforeach; ?>
 
+	<div class="w-100 d-flex justify-content-center">
+		<?php if (count($vendas) >= 5 || $vendas->pagingParams()['pageCount'] > 1) : ?>
+			<?= $this->element('default/paginacao', [
+				'parametrosPaginacao' => $vendas->pagingParams()
+			]); ?>
+		<?php endif; ?>
+	</div>
 </section>

@@ -32,6 +32,7 @@ class CaixasController extends AppController
         $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
 
         $vendas = $this->Vendas->findVendasComVendasProdutos();
+        $vendas =  $this->paginate($vendas, ['limit' => 5]);
 
         $this->set(compact('caixaAberto', 'vendas'));
     }
