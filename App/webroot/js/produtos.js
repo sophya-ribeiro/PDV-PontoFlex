@@ -25,7 +25,7 @@ function editarDadosProduto(id) {
 		lote: linhaTabela.cells[6].textContent.trim(),
 		quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
 		precoUnitario: linhaTabela.cells[8].textContent.replace("R$", "").trim(),
-		dataValidade: linhaTabela.cells[9].textContent.trim()
+		dataValidade: linhaTabela.cells[9].textContent.trim().split('/').reverse().join('-')
 	};
 
 	inputEditId.value = dadosProduto.id;
