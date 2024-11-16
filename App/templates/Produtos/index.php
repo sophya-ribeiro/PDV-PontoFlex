@@ -106,7 +106,7 @@
 			</tbody>
 		</table>
 
-		<?php if (count($produtos) >= 10) : ?>
+		<?php if (count($produtos) >= 10 || $parametrosPaginacao['pageCount'] > 0) : ?>
 			<nav aria-label="Navegação de página">
 				<ul class="pagination justify-content-center">
 					<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
