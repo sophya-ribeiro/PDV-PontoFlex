@@ -26,7 +26,7 @@ class CaixasController extends AppController
         $cpfUsuario = $this->Authentication->getIdentity()->cpf;
         $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
 
-        $this->render($caixaAberto ? 'index_caixa_aberto' : 'index_caixa_fechado');
+        $this->set(compact('caixaAberto'));
     }
 
     /**
@@ -45,14 +45,14 @@ class CaixasController extends AppController
     /**
      * Abrir caixa method
      *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      */
     public function abrirCaixa()
     {
         if ($this->request->is('post')) {
-            try {
-                $cpfUsuario = $this->Authentication->getIdentity()->cpf;
+            $cpfUsuario = $this->Authentication->getIdentity()->cpf;
 
+            try {
                 $this->Caixas->abrirCaixa($cpfUsuario);
 
                 $this->Flash->success(__('Caixa aberto com sucesso.'));
@@ -67,42 +67,24 @@ class CaixasController extends AppController
     }
 
     /**
-     * Edit method
+     * Fechar caixa method
      *
-     * @param string|null $id Caixa id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      */
-    public function edit($id = null)
+    public function fecharCaixa()
     {
-        $caixa = $this->Caixas->get($id, contain: []);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $caixa = $this->Caixas->patchEntity($caixa, $this->request->getData());
-            if ($this->Caixas->save($caixa)) {
-                $this->Flash->success(__('The caixa has been saved.'));
+        if ($this->request->is('post')) {
+            $cpfUsuario = $this->Authentication->getIdentity()->cpf;
+
+            try {
+                $this->Caixas->fecharCaixa($cpfUsuario);
+
+                $this->Flash->success(__('Caixa fechado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
+            } catch (\Throwable $th) {
+                $this->Flash->error(__($th->getMessage()));
             }
-            $this->Flash->error(__('The caixa could not be saved. Please, try again.'));
-        }
-        $this->set(compact('caixa'));
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Caixa id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $caixa = $this->Caixas->get($id);
-        if ($this->Caixas->delete($caixa)) {
-            $this->Flash->success(__('The caixa has been deleted.'));
-        } else {
-            $this->Flash->error(__('The caixa could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

@@ -110,4 +110,15 @@ class CaixasTable extends Table
 
         return $this->saveOrFail($caixa);
     }
+
+    public function fecharCaixa($operadorCpf)
+    {
+        $caixaAberto = $this->findCaixaAbertoPorCpf($operadorCpf);
+
+        $dataAtual = date("Y-m-d H:i:s");
+
+        $caixaAberto->instante_fechamento = $dataAtual;
+
+        return $this->saveOrFail($caixaAberto);
+    }
 }

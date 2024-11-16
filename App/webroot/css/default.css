@@ -221,6 +221,19 @@ main {
 	cursor: pointer;
 }
 
+/* ----- CONTAINER CENTRAL ----- */
+
+.container-central {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-top: 2rem;
+	gap: 1.5rem;
+	padding: 0rem 0rem 1rem 1rem;
+	width: 100%;
+}
+
 /* -------- FOOTER -------- */
 
 footer {

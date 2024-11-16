@@ -1,0 +1,89 @@
+.botao-caixa-fechado {
+	background-color: #20AA57;
+	padding: 0.6rem 2rem 0.6rem 2rem;
+	margin-top: 1rem;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	font-size: 14px;
+}
+
+.botao-caixa-aberto {
+	background-color: #FD8719;
+	padding: 0.6rem 2rem 0.6rem 2rem;
+	margin-top: 1rem;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	font-size: 14px;
+}
+
+.div-texto {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.texto-pdv {
+	color: #5e6561;
+	font-size: 15px;
+	text-align: center;
+	font-weight: 400;
+}
+
+.texto-abertura {
+	color: #303030;
+	font-size: 10px;
+	margin-top: 0.5rem;
+}
+
+/* ------- VENDA ------- */
+
+.container-venda {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: white;
+	padding: 1rem 1.5rem 1rem 1.5rem;
+	border-radius: 8px;
+	width: 100%;
+	margin-bottom: 0.2rem;
+}
+
+.venda-titulo {
+	font-size: 20px;
+	font-weight: 500;
+	color: black;
+	width: 50%;
+}
+
+.container-venda-titulo {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.venda-status {
+	background-color: #20AA57;
+	color: white;
+	font-size: 13px;
+	padding: 0.3rem 1rem 0.3rem 1rem;
+	margin: 0rem 1rem 0rem 1rem;
+	border-radius: 50px;
+}
+
+.venda-texto {
+	font-size: 15px;
+}
+
+.ellipsis-icon {
+	font-size: 30px;
+}
+
+.container-venda-itens {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
