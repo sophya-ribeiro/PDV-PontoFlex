@@ -114,7 +114,7 @@
 			</div>
 		<?php endif; ?>
 
-		<?php if (count($produtos) >= 10 || $parametrosPaginacao['pageCount'] > 1) : ?>
+		<?php if (count($produtos) >= 10 || $produtos->pagingParams()['pageCount'] > 1) : ?>
 			<?= $this->element('default/paginacao', [
 				'parametrosPaginacao' => $produtos->pagingParams(),
 				'queryParams' => ['filtro' => $filtro, 'busca' => $busca]
