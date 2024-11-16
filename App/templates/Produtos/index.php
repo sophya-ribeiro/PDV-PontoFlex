@@ -32,7 +32,6 @@
 	<?= $this->element('default/footer'); ?>
 </div>
 
-<!--BUSCAR PRODUTO AQUI-->
 <section class="container-central">
 	<div class="busca m-0">
 		<div class="busca-botao">
@@ -65,48 +64,57 @@
 				</ul>
 			</div>
 		</div>
-
 	</div>
 
-	<div class="div-tabela rounded">
-		<table class="table rounded overflow-hidden table-striped table-borderless">
-			<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
-				<tr>
-					<th>Código</th>
-					<th>Nome</th>
-					<th>Marca</th>
-					<th>Modelo</th>
-					<th>Lote</th>
-					<th>Qtd.</th>
-					<th>Preço</th>
-					<th>Validade</th>
-					<th></th>
-			</thead>
+	<?php if ($busca) : ?>
+		<h2 class="fs-5">Resultados da busca:</h2>
+	<?php endif; ?>
 
-			<tbody>
-				<?php foreach ($produtos as $produto): ?>
-					<tr data-produto-id="<?= $produto->id ?>">
-						<td class="d-none"><?= $produto->id ?></td>
-						<td class="d-none"><?= $produto->categoria->id ?></td>
-						<td class="tabela-texto py-3"><?= $produto->codigo ?></td>
-						<td class="tabela-texto py-3"><?= $produto->nome ?></td>
-						<td class="tabela-texto py-3"><?= $produto->marca ?></td>
-						<td class="tabela-texto py-3"><?= $produto->modelo ?></td>
-						<td class="tabela-texto py-3"><?= $produto->lote ?></td>
-						<td class="tabela-texto py-3"><?= $produto->quantidade_estoque ?></td>
-						<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
-						<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
-						<td class="py-3">
-							<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)" title="Editar produto">
-								<ion-icon name="create" class="create-icon"></ion-icon>
-							</a>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+	<?php if (count($produtos) > 0) : ?>
+		<div class="div-tabela rounded">
+			<table class="table rounded overflow-hidden table-striped table-borderless">
+				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
+					<tr>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Marca</th>
+						<th>Modelo</th>
+						<th>Lote</th>
+						<th>Qtd.</th>
+						<th>Preço</th>
+						<th>Validade</th>
+						<th></th>
+				</thead>
 
-		<?php if (count($produtos) >= 10 || $parametrosPaginacao['pageCount'] > 0) : ?>
+				<tbody>
+					<?php foreach ($produtos as $produto): ?>
+						<tr data-produto-id="<?= $produto->id ?>">
+							<td class="d-none"><?= $produto->id ?></td>
+							<td class="d-none"><?= $produto->categoria->id ?></td>
+							<td class="tabela-texto py-3"><?= $produto->codigo ?></td>
+							<td class="tabela-texto py-3"><?= $produto->nome ?></td>
+							<td class="tabela-texto py-3"><?= $produto->marca ?></td>
+							<td class="tabela-texto py-3"><?= $produto->modelo ?></td>
+							<td class="tabela-texto py-3"><?= $produto->lote ?></td>
+							<td class="tabela-texto py-3"><?= $produto->quantidade_estoque ?></td>
+							<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
+							<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
+							<td class="py-3">
+								<a data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)" title="Editar produto">
+									<ion-icon name="create" class="create-icon"></ion-icon>
+								</a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php else: ?>
+			<div class="w-100 text-center pt-3">
+				<span>Nenhum produto encontrado.</span>
+			</div>
+		<?php endif; ?>
+
+		<?php if (count($produtos) >= 10 || $parametrosPaginacao['pageCount'] > 1) : ?>
 			<nav aria-label="Navegação de página">
 				<ul class="pagination justify-content-center">
 					<li class="page-item <?= $parametrosPaginacao['hasPrevPage'] ? '' : 'disabled' ?>">
@@ -131,7 +139,7 @@
 				</ul>
 			</nav>
 		<?php endif; ?>
-	</div>
+		</div>
 </section>
 
 <!-- Início modal-cadastrar-produto -->
