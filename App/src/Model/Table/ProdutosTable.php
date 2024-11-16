@@ -139,6 +139,7 @@ class ProdutosTable extends Table
                 'OR' => [
                     'Produtos.nome LIKE' => '%' . $busca . '%',
                     'Produtos.codigo LIKE' => '%' . $busca . '%',
+                    'Categorias.nome LIKE' => '%' . $busca . '%',
                 ]
             ]);
         }
