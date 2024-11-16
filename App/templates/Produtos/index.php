@@ -37,11 +37,11 @@
 	<div class="busca m-0">
 		<div class="busca-botao">
 			<?= $this->Form->create(null, ['type' => 'get', 'class' => 'w-100']) ?>
-			<?= $this->Form->control('query', [
+			<?= $this->Form->control('busca', [
 				'label' => false,
 				'class' => 'form-control border rounded-pill busca-input',
 				'placeholder' => 'Buscar produto...',
-				'value' => $query ?? ''
+				'value' => $this->request->getQuery('busca') ?? ''
 			]) ?>
 			<?= $this->Form->end() ?>
 			<ion-icon name="search" class="search-icon"></ion-icon>

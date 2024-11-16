@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -45,5 +46,14 @@ class Produto extends Entity
         'categoria_id' => true,
         'categoria' => true,
         'vendas' => true,
+    ];
+
+    public static $ordens = [
+        'Mais recentes' => ['Produtos.id' => 'DESC'],
+        'Mais antigos' => ['Produtos.id' => 'ASC'],
+        'Maior quantidade' => ['Produtos.quantidade_estoque' => 'DESC'],
+        'Menor quantidade' => ['Produtos.quantidade_estoque' => 'ASC'],
+        'Maior preço' => ['Produtos.preco_unitario' => 'DESC'],
+        'Menor preço' => ['Produtos.preco_unitario' => 'ASC'],
     ];
 }

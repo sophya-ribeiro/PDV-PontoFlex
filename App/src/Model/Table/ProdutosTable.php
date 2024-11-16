@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Produto;
+use App\Utility\CurrencyHelper;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -123,5 +126,43 @@ class ProdutosTable extends Table
         $rules->add($rules->existsIn(['categoria_id'], 'Categorias'), ['errorField' => 'categoria_id']);
 
         return $rules;
+    }
+
+    public function findProdutosPorFiltroBusca($filtro, $busca)
+    {
+        $query = $this->find()
+            ->contain(['Categorias'])
+            ->orderBy(Produto::$ordens[$filtro]);
+
+        if (!empty($busca)) {
+            $query = $query->where([
+                'OR' => [
+                    'Produtos.nome LIKE' => '%' . $busca . '%',
+                    'Produtos.codigo LIKE' => '%' . $busca . '%',
+                ]
+            ]);
+        }
+
+        return $query;
+    }
+
+    public function salvar($requestData)
+    {
+        $requestData['preco_unitario'] = CurrencyHelper::brlToFloat($requestData['preco_unitario']);
+
+        $produto = $this->newEmptyEntity();
+        $produto = $this->patchEntity($produto, $requestData);
+
+        return $this->save($produto);
+    }
+
+    public function editar($requestData)
+    {
+        $requestData['preco_unitario'] = CurrencyHelper::brlToFloat($requestData['preco_unitario']);
+
+        $produto = $this->get($requestData['id']);
+        $produto = $this->patchEntity($produto, $requestData);
+
+        return $this->save($produto);
     }
 }
