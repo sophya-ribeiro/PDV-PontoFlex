@@ -41,9 +41,7 @@ class ProdutosController extends AppController
         $produtos =  $this->paginate($produtos, ['limit' => 10]);
         $categorias = $this->Produtos->Categorias->find('list')->all();
 
-        $parametrosPaginacao = $produtos->pagingParams();
-
-        $this->set(compact('produtos', 'categorias', 'filtro', 'busca', 'parametrosPaginacao'));
+        $this->set(compact('produtos', 'categorias', 'filtro', 'busca'));
     }
 
 
