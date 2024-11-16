@@ -1,5 +1,5 @@
 <?= $this->Html->css('produtos') ?>
-<?= $this->Html->script('produtos', ['defer']) ?>
+<?= $this->Html->script(['produtos', 'input-preco'], ['defer']) ?>
 
 <div class="container-lateral">
 	<div class="container-lateral-nav">
@@ -196,7 +196,7 @@
 
 					<div>
 						<label for="produto-preco" class="col-form-label">Preço <span class="form-span">*</span></label>
-						<input type="text" class="form-control" id="produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
+						<input type="text" class="form-control input-preco" id="produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
 					</div>
 
 					<div>
@@ -290,7 +290,7 @@
 
 					<div>
 						<label for="edit-produto-preco" class="col-form-label">Preço <span class="form-span">*</span></label>
-						<input type="text" class="form-control" id="edit-produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
+						<input type="text" class="form-control input-preco" id="edit-produto-preco" placeholder="R$ 00,00" name="preco_unitario" required>
 					</div>
 
 					<div>
