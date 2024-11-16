@@ -100,7 +100,7 @@
 							<td class="tabela-texto py-3">R$ <?= number_format($produto->preco_unitario, 2, ",", ".") ?></td>
 							<td class="tabela-texto py-3"><?= $produto->data_validade ?? "-" ?></td>
 							<td class="py-3">
-								<a class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)" title="Editar produto">
+								<a role="button" data-bs-toggle="modal" data-bs-target="#modal-editar-produto" onclick="editarDadosProduto(<?= $produto->id ?>)" title="Editar produto">
 									<ion-icon name="create" class="create-icon"></ion-icon>
 								</a>
 							</td>
