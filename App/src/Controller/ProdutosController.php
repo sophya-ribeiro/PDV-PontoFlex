@@ -61,7 +61,7 @@ class ProdutosController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } catch (\Throwable $th) {
-                $this->Flash->error(__('O produto não pôde ser cadastrado. Por favor, tente novamente..'));
+                $this->Flash->error(__('O produto não pôde ser cadastrado. Por favor, tente novamente.'));
             }
         }
 
@@ -86,10 +86,25 @@ class ProdutosController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             } catch (\Throwable $th) {
-                $this->Flash->error(__('O produto não pôde ser alterado. Por favor, tente novamente..'));
+                $this->Flash->error(__('O produto não pôde ser alterado. Por favor, tente novamente.'));
             }
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Buscar produtos method
+     *
+     * @return \Cake\Http\Response|null|void JSON array
+     */
+    public function buscarProdutos()
+    {
+        $this->autoRender = false;
+
+        $busca = trim($this->request->getQuery('busca') ?? '');
+        $produtos = $this->Produtos->findProdutosPorFiltroBusca('Mais recentes', $busca);
+
+        return $this->response->withType("application/json")->withStringBody(json_encode($produtos));
     }
 }
