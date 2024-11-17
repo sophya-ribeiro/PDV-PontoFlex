@@ -145,7 +145,7 @@ class VendasTable extends Table
         foreach ($requestData['produtos'] as $produtoVenda) {
             $produto = $this->Produtos->get($produtoVenda['id']);
 
-            $valorTotal += $produto->preco_unitario;
+            $valorTotal += $produto->preco_unitario * $produtoVenda['quantidade'];
         }
 
         $vendaDados = [
