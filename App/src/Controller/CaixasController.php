@@ -32,7 +32,7 @@ class CaixasController extends AppController
         $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
 
         $vendas = $this->Vendas->findVendasComVendasProdutos();
-        $vendas =  $this->paginate($vendas, ['limit' => 5]);
+        $vendas = $this->paginate($vendas, ['limit' => 5]);
 
         $this->set(compact('caixaAberto', 'vendas'));
     }
@@ -50,6 +50,24 @@ class CaixasController extends AppController
         if (!$caixaAberto) {
             return $this->render('caixa_fechado');
         }
+
+        if ($this->request->is('post')) {
+            try {
+                $requestData = $this->request->getData();
+
+                $this->Vendas->registrarVenda($cpfUsuario, $requestData);
+
+                $this->Flash->success(__('Venda concluída com sucesso.'));
+
+                return $this->redirect(['action' => 'index']);
+            } catch (\Throwable $th) {
+                $this->Flash->error(__($th->getMessage()));
+
+                return $this->redirect(['action' => 'registrarVenda']);
+            }
+        }
+
+        $this->set(compact('caixaAberto'));
     }
 
     /**

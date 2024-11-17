@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Venda;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use DomainException;
 
 /**
  * Vendas Model
@@ -123,5 +125,42 @@ class VendasTable extends Table
         return $this->find()
             ->contain(['VendasProdutos' => ['Produtos']])
             ->orderByDesc('id');
+    }
+
+    public function registrarVenda($cpfUsuario, $requestData)
+    {
+        $caixaAberto = $this->Caixas->findCaixaAbertoPorCpf($cpfUsuario);
+
+        if (!$caixaAberto) {
+            throw new DomainException("O caixa precisa estar aberto para registrar uma venda.", 1);
+        }
+
+        $valorTotal = 0;
+        $dataAtual = date('Y-m-d');
+
+        if (!is_numeric($requestData['desconto_total'])) {
+            $requestData['desconto_total'] = 0;
+        }
+
+        foreach ($requestData['produtos'] as $produtoVenda) {
+            $produto = $this->Produtos->get($produtoVenda['id']);
+
+            $valorTotal += $produto->preco_unitario;
+        }
+
+        $vendaDados = [
+            'forma_pagamento' => Venda::FORMAS_PAGAMENTO[$requestData['forma_pagamento']],
+            'quantidade_parcelas' => $requestData['quantidade_parcelas'],
+            'data_venda' => $dataAtual,
+            'valor_total' => $valorTotal,
+            'desconto_total' => $requestData['desconto_total'] ?? 0,
+            'operador_funcionario_cpf' => $cpfUsuario,
+            'caixa_id' => $caixaAberto->id,
+        ];
+
+        $venda = $this->newEntity($vendaDados);
+        $venda = $this->saveOrFail($venda);
+
+        return $this->VendasProdutos->salvarProdutosVenda($venda, $requestData['produtos']);
     }
 }

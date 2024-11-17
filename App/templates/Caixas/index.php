@@ -1,11 +1,10 @@
 <?php
 
-use Cake\Core\Configure;
 use Cake\I18n\DateTime;
 
 ?>
 
-<?= $this->Html->css('caixas') ?>
+<?= $this->Html->css(['caixas', 'caixas_container_lateral']) ?>
 
 <div class="container-lateral">
 	<div class="container-lateral-nav">

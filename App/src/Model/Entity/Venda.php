@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -41,5 +42,12 @@ class Venda extends Entity
         'caixa_id' => true,
         'caixa' => true,
         'produtos' => true,
+    ];
+
+    public const FORMAS_PAGAMENTO = [
+        'dinheiro' => 'Dinheiro',
+        'pix' => 'Pix',
+        'debito' => 'Cartão | Débito',
+        'credito' => 'Cartão | Crédito',
     ];
 }

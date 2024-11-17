@@ -19,7 +19,11 @@ $currentRoute = strtolower($this->getName());
 
 function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
 {
-    return $currentRoute == $nomeItem ?  "nav-item-ativo" : "nav-item-inativo";
+    if ($nomeItem == 'produtos' && $currentRoute == 'categorias') {
+        return 'nav-item-ativo';
+    }
+
+    return $currentRoute == $nomeItem ?  'nav-item-ativo' : 'nav-item-inativo';
 }
 
 ?>

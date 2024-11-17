@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Venda;
+use Cake\Datasource\ConnectionManager;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -99,5 +102,49 @@ class VendasProdutosTable extends Table
         $rules->add($rules->existsIn(['venda_id'], 'Vendas'), ['errorField' => 'venda_id']);
 
         return $rules;
+    }
+
+    public function salvarProdutosVenda(Venda $venda, $produtosVenda)
+    {
+        /** @var \Cake\Database\Connection $connection */
+        $connection = ConnectionManager::get('default');
+
+        $connection->begin();
+
+        try {
+            $vendaProdutoEntities = [];
+
+            foreach ($produtosVenda as $produtoVenda) {
+                $produto = $this->Produtos->get($produtoVenda['id']);
+
+                $vendaProdutoEntities[] = $this->newEntity([
+                    'valor_venda' => $produto->preco_unitario * $produtoVenda['quantidade'],
+                    'desconto' => 0,
+                    'numero_unidades' => $produtoVenda['quantidade'],
+                    'produto_id' => $produto->id,
+                    'venda_id' => $venda->id
+                ]);
+
+                $produto->quantidade_estoque -= $produtoVenda['quantidade'];
+
+                if (!$this->Produtos->save($produto)) {
+                    throw new \Exception("Erro ao atualizar o estoque do produto: {$produto->id}");
+                }
+            }
+
+            if (!$this->saveMany($vendaProdutoEntities)) {
+                throw new \Exception("Erro ao salvar os produtos da venda.");
+            }
+
+            $connection->commit();
+
+            return true;
+        } catch (\Exception $e) {
+            $connection->rollback();
+
+            $this->Vendas->delete($venda);
+
+            throw $e;
+        }
     }
 }

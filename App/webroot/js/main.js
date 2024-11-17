@@ -26,8 +26,19 @@ function hideToasts() {
 	});
 }
 
+function brlStringToFloat(brlString) {
+	return parseFloat(brlString.replace("R$", "").trim().replaceAll(".", "").replace(",", "."));
+}
+
+function floatToBrlString(numeroFloat) {
+	return parseFloat(numeroFloat).toLocaleString("pt-br", {
+		style: "currency",
+		currency: "BRL",
+	});
+}
+
 window.onload = () => {
 	openModalWithHash();
 
 	hideToasts();
-}
+};
