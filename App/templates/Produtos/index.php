@@ -75,6 +75,7 @@
 			<table class="table rounded overflow-hidden table-striped table-borderless">
 				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
 					<tr>
+						<th>Categoria</th>
 						<th>Código</th>
 						<th>Nome</th>
 						<th>Marca</th>
@@ -91,6 +92,7 @@
 						<tr data-produto-id="<?= $produto->id ?>">
 							<td class="d-none"><?= $produto->id ?></td>
 							<td class="d-none"><?= $produto->categoria->id ?></td>
+							<td class="tabela-texto py-3"><div class="rounded-circle" style="width: 20px; height: 20px; background-color: <?= $produto->categoria->cor ?>;"></div></td>
 							<td class="tabela-texto py-3"><?= $produto->codigo ?></td>
 							<td class="tabela-texto py-3"><?= $produto->nome ?></td>
 							<td class="tabela-texto py-3"><?= $produto->marca ?></td>
