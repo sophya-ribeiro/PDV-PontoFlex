@@ -92,7 +92,7 @@
 						<tr data-produto-id="<?= $produto->id ?>">
 							<td class="d-none"><?= $produto->id ?></td>
 							<td class="d-none"><?= $produto->categoria->id ?></td>
-							<td class="tabela-texto py-3"><div class="rounded-circle" style="width: 20px; height: 20px; background-color: <?= $produto->categoria->cor ?>;"></div></td>
+							<td class="tabela-texto py-3"><div title="<?= $produto->categoria->nome ?>" class="rounded-circle" style="width: 20px; height: 20px; background-color: <?= $produto->categoria->cor ?>;"></div></td>
 							<td class="tabela-texto py-3"><?= $produto->codigo ?></td>
 							<td class="tabela-texto py-3"><?= $produto->nome ?></td>
 							<td class="tabela-texto py-3"><?= $produto->marca ?></td>
