@@ -18,14 +18,14 @@ function editarDadosProduto(id) {
 	const dadosProduto = {
 		id: linhaTabela.cells[0].textContent.trim(),
 		categoria: linhaTabela.cells[1].textContent.trim(),
-		codigo: linhaTabela.cells[2].textContent.trim(),
-		nome: linhaTabela.cells[3].textContent.trim(),
-		marca: linhaTabela.cells[4].textContent.trim(),
-		modelo: linhaTabela.cells[5].textContent.trim(),
-		lote: linhaTabela.cells[6].textContent.trim(),
-		quantidadeEstoque: linhaTabela.cells[7].textContent.trim(),
-		precoUnitario: linhaTabela.cells[8].textContent.replace("R$", "").trim(),
-		dataValidade: linhaTabela.cells[9].textContent.trim().split('/').reverse().join('-')
+		codigo: linhaTabela.cells[3].textContent.trim(),
+		nome: linhaTabela.cells[4].textContent.trim(),
+		marca: linhaTabela.cells[5].textContent.trim(),
+		modelo: linhaTabela.cells[6].textContent.trim(),
+		lote: linhaTabela.cells[7].textContent.trim(),
+		quantidadeEstoque: linhaTabela.cells[8].textContent.trim(),
+		precoUnitario: linhaTabela.cells[9].textContent.replace("R$", "").trim(),
+		dataValidade: linhaTabela.cells[10].textContent.trim().split('/').reverse().join('-')
 	};
 
 	inputEditId.value = dadosProduto.id;
