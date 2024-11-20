@@ -196,7 +196,7 @@
 
 					<div>
 						<label for="produto-quantidade" class="col-form-label">Quantidade <span class="form-span">*</span></label>
-						<input type="number" class="form-control" id="produto-quantidade" placeholder="0" name="quantidade_estoque" required>
+						<input type="number" class="form-control" id="produto-quantidade" placeholder="0" min="0" name="quantidade_estoque" required>
 					</div>
 
 					<div>
@@ -290,7 +290,7 @@
 
 					<div>
 						<label for="edit-produto-quantidade" class="col-form-label">Quantidade <span class="form-span">*</span></label>
-						<input type="number" class="form-control" id="edit-produto-quantidade" placeholder="0" name="quantidade_estoque" required>
+						<input type="number" class="form-control" id="edit-produto-quantidade" placeholder="0" min="0" name="quantidade_estoque" required>
 					</div>
 
 					<div>

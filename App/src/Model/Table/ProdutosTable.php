@@ -87,7 +87,7 @@ class ProdutosTable extends Table
         $validator
             ->scalar('modelo')
             ->maxLength('modelo', 128)
-            ->allowEmptyString('modelo');
+            ->notEmptyString('modelo');
 
         $validator
             ->scalar('lote')
@@ -97,7 +97,8 @@ class ProdutosTable extends Table
 
         $validator
             ->integer('quantidade_estoque')
-            ->allowEmptyString('quantidade_estoque');
+            ->greaterThanOrEqual('quantidade_estoque', 0)
+            ->notEmptyString('quantidade_estoque');
 
         $validator
             ->decimal('preco_unitario')
@@ -154,7 +155,7 @@ class ProdutosTable extends Table
         $produto = $this->newEmptyEntity();
         $produto = $this->patchEntity($produto, $requestData);
 
-        return $this->save($produto);
+        return $this->saveOrFail($produto);
     }
 
     public function editar($requestData)
@@ -164,6 +165,6 @@ class ProdutosTable extends Table
         $produto = $this->get($requestData['id']);
         $produto = $this->patchEntity($produto, $requestData);
 
-        return $this->save($produto);
+        return $this->saveOrFail($produto);
     }
 }
