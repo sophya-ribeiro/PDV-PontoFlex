@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Table;
 
 use App\Model\Entity\Venda;
+use App\Utility\CurrencyHelper;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -142,6 +143,8 @@ class VendasTable extends Table
             $requestData['desconto_total'] = 0;
         }
 
+        $requestData['desconto_total'] = CurrencyHelper::brlToFloat($requestData['desconto_total']);
+
         foreach ($requestData['produtos'] as $produtoVenda) {
             $produto = $this->Produtos->get($produtoVenda['id']);
 
@@ -153,7 +156,7 @@ class VendasTable extends Table
             'quantidade_parcelas' => $requestData['quantidade_parcelas'],
             'data_venda' => $dataAtual,
             'valor_total' => $valorTotal,
-            'desconto_total' => $requestData['desconto_total'] ?? 0,
+            'desconto_total' => $requestData['desconto_total'],
             'operador_funcionario_cpf' => $cpfUsuario,
             'caixa_id' => $caixaAberto->id,
         ];
