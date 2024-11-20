@@ -75,7 +75,7 @@
 			<table class="table rounded overflow-hidden table-striped table-borderless">
 				<thead class="border-1 border-top-0 border-end-0 border-start-0 border-dark-subtle">
 					<tr>
-						<th>Categoria</th>
+						<th class="text-white">__</th>
 						<th>Código</th>
 						<th>Nome</th>
 						<th>Marca</th>
