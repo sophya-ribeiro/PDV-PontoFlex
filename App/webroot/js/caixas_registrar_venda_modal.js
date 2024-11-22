@@ -91,6 +91,7 @@ function exibirProdutosEncontrados(produtos = []) {
 								class="form-check-input checkbox-produto"
 								type="checkbox"
 								id="checkbox-produto-${produto.id}"
+								${produto.quantidade_estoque == 0 ? "disabled" : ""}
 							/>
 							<label class="form-check-label" for="checkbox-produto-${produto.id}"></label>
 						</div>
