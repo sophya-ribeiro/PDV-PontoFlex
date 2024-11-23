@@ -136,10 +136,14 @@ class VendasTable extends Table
             throw new DomainException("O caixa precisa estar aberto para registrar uma venda.", 1);
         }
 
+        if (!isset($requestData['produtos'])) {
+            throw new DomainException("Adicione produtos à venda.", 1);
+        }
+
         $valorTotal = 0;
         $dataAtual = date('Y-m-d');
 
-        if (!is_numeric($requestData['desconto_total'])) {
+        if (!isset($requestData['desconto_total'])) {
             $requestData['desconto_total'] = 0;
         }
 
