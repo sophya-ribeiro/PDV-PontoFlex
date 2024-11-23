@@ -37,6 +37,10 @@ function ocultarParcelamentoContainer() {
 	parcelamentoContainer.classList.add("d-none");
 }
 
+function getValorDesconto() {
+	return brlStringToFloat(inputValorDesconto.value) || 0;
+}
+
 function getTotalVendaSemDesconto() {
 	const precosTotaisTd = document.querySelectorAll(".tabela-texto-preco-total");
 
@@ -50,9 +54,7 @@ function getTotalVendaSemDesconto() {
 }
 
 function atualizarValorTotalVenda() {
-	let valorDesconto = inputValorDesconto.value || 0;
-
-	pValorTotal.textContent = floatToBrlString(getTotalVendaSemDesconto() - valorDesconto);
+	pValorTotal.textContent = floatToBrlString(getTotalVendaSemDesconto() - getValorDesconto());
 
 	atualizarValoresParcelamento();
 }
@@ -100,9 +102,7 @@ inputValorDesconto.addEventListener("input", (event) => {
 		inputValorDesconto.value = null;
 	}
 
-	const descontoAtual = parseFloat(event.target.value) || 0;
-
-	if (valorTotalVenda - descontoAtual < 0) {
+	if (valorTotalVenda - getValorDesconto() < 0) {
 		inputValorDesconto.value = valorTotalVenda;
 	}
 
