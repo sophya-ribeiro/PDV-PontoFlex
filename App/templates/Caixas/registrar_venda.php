@@ -47,7 +47,8 @@ use Cake\I18n\DateTime;
 				'controller' => 'Caixas',
 				'action' => 'registrarVenda'
 			],
-			'type' => 'post'
+			'type' => 'post',
+			'onkeydown' => 'return event.key != "Enter";'
 		]); ?>
 
 		<div class="div-titulo">

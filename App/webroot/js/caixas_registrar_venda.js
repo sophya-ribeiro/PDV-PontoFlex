@@ -7,7 +7,7 @@ const radiosPagamento = document.querySelectorAll('input[name="forma_pagamento"'
 const pValorTotal = document.querySelector("#valor-total");
 const inputValorDesconto = document.querySelector("#valor-desconto");
 
-function exibirParcelamentoContainer() {
+function atualizarValoresParcelamento() {
 	const valorTotal = brlStringToFloat(pValorTotal.textContent);
 
 	const parcelas = {
@@ -23,6 +23,10 @@ function exibirParcelamentoContainer() {
 
 		spanParcela.textContent = parcelas[key].toFixed(2).replace(".", ",");
 	}
+}
+
+function exibirParcelamentoContainer() {
+	atualizarValoresParcelamento();
 
 	parcelamentoContainer.classList.remove("d-none");
 }
@@ -33,17 +37,24 @@ function ocultarParcelamentoContainer() {
 	parcelamentoContainer.classList.add("d-none");
 }
 
-function atualizarValorTotalVenda() {
+function getTotalVendaSemDesconto() {
 	const precosTotaisTd = document.querySelectorAll(".tabela-texto-preco-total");
 
 	let valorTotal = 0;
-	let valorDesconto = inputValorDesconto.value || 0;
 
 	precosTotaisTd.forEach((precoTotalTd) => {
 		valorTotal += brlStringToFloat(precoTotalTd.textContent);
 	});
 
-	pValorTotal.textContent = floatToBrlString(valorTotal - valorDesconto);
+	return valorTotal;
+}
+
+function atualizarValorTotalVenda() {
+	let valorDesconto = inputValorDesconto.value || 0;
+
+	pValorTotal.textContent = floatToBrlString(getTotalVendaSemDesconto() - valorDesconto);
+
+	atualizarValoresParcelamento();
 }
 
 function atualizarValorTotalProduto(produtoId) {
@@ -83,11 +94,16 @@ radiosPagamento.forEach((radio) => {
 });
 
 inputValorDesconto.addEventListener("input", (event) => {
-	const valorTotalVenda = brlStringToFloat(pValorTotal.textContent);
+	const valorTotalVenda = getTotalVendaSemDesconto();
+
+	if (valorTotalVenda == 0) {
+		inputValorDesconto.value = null;
+	}
+
 	const descontoAtual = parseFloat(event.target.value) || 0;
 
 	if (valorTotalVenda - descontoAtual < 0) {
-		event.target.value = valorTotalVenda;
+		inputValorDesconto.value = valorTotalVenda;
 	}
 
 	atualizarValorTotalVenda();

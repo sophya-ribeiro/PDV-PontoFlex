@@ -31,9 +31,12 @@ function brlStringToFloat(brlString) {
 }
 
 function floatToBrlString(numeroFloat) {
+	numeroFloat = parseFloat(numeroFloat);
+
 	return parseFloat(numeroFloat).toLocaleString("pt-br", {
 		style: "currency",
 		currency: "BRL",
+		minimumIntegerDigits: 2,
 	});
 }
 
