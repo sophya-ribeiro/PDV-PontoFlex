@@ -56,6 +56,10 @@
     font-weight: 400;
 }
 
+#btn-dropdown-filtro {
+    width: 185px;
+}
+
 .div-tabela {
     width: 100%;
     display: flex;

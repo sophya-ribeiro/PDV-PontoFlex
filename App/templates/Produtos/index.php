@@ -50,7 +50,7 @@
 			<ion-icon name="filter" class="filter-icon"></ion-icon>
 			<h1 class="texto-filtro m-0">Filtrar por:</h1>
 			<div class="dropdown">
-				<button class="btn btn-light dropdown-toggle rounded btn-secondary px-4 py-2" type="button"
+				<button class="btn btn-light dropdown-toggle rounded btn-secondary px-4 py-2" id="btn-dropdown-filtro" type="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
 					<?= $filtro ?>
 				</button>

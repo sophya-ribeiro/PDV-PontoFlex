@@ -124,7 +124,6 @@ li a {
 }
 
 .dropdown-item--primeiro {
-	font-size: 15px;
 	display: flex !important;
 	align-items: center !important;
 	border-radius: 15px 15px 0px 0px !important;
