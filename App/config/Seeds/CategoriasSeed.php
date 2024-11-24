@@ -21,18 +21,33 @@ class CategoriasSeed extends AbstractSeed
         $data = [
             [
                 'id' => 1,
-                'nome' => 'Insumos',
-                'cor' => '#dd4baf'
+                'nome' => 'Frios',
+                'cor' => '#218a99'
             ],
             [
                 'id' => 2,
-                'nome' => 'Acessórios',
-                'cor' => '#bd4bdd'
+                'nome' => 'Açougue',
+                'cor' => '#db351b'
             ],
             [
                 'id' => 3,
-                'nome' => 'Peças',
-                'cor' => '#774bdd'
+                'nome' => 'Hortifruti',
+                'cor' => '#1a9f49'
+            ],
+            [
+                'id' => 4,
+                'nome' => 'Bebidas',
+                'cor' => '#3e80d2'
+            ],
+            [
+                'id' => 5,
+                'nome' => 'Limpeza',
+                'cor' => '#c96516'
+            ],
+            [
+                'id' => 6,
+                'nome' => 'Condimentos',
+                'cor' => '#dd4baf'
             ]
         ];
 
