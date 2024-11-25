@@ -312,6 +312,9 @@ td {
 #resultados-produtos {
 	display: flex;
 	flex-direction: column;
+	max-height: 450px;
+	overflow-y: auto;
+	padding: 0 0.5rem;
 }
 
 .lista-produto {
