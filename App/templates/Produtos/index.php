@@ -55,12 +55,12 @@
 					<?= $filtro ?>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item dropdown-item--primeiro" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais recentes']]) ?>">Mais recentes</a></li>
-					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais antigos']]) ?>">Mais antigos</a></li>
-					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior quantidade']]) ?>">Maior quantidade</a></li>
-					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor quantidade']]) ?>">Menor quantidade</a></li>
-					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior preço']]) ?>">Maior preço</a></li>
-					<li><a class="dropdown-item dropdown-item--ultimo" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor preço']]) ?>">Menor preço</a></li>
+					<li><a class="dropdown-item dropdown-item--primeiro" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais recentes', 'busca' => $busca]]) ?>">Mais recentes</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Mais antigos', 'busca' => $busca]]) ?>">Mais antigos</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior quantidade', 'busca' => $busca]]) ?>">Maior quantidade</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor quantidade', 'busca' => $busca]]) ?>">Menor quantidade</a></li>
+					<li><a class="dropdown-item" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Maior preço', 'busca' => $busca]]) ?>">Maior preço</a></li>
+					<li><a class="dropdown-item dropdown-item--ultimo" href="<?= $this->Url->build(['action' => 'index', '?' => ['filtro' => 'Menor preço', 'busca' => $busca]]) ?>">Menor preço</a></li>
 				</ul>
 			</div>
 		</div>
