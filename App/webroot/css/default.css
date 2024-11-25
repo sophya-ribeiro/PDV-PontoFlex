@@ -148,6 +148,10 @@ li a {
 	font-size: 20px;
 }
 
+#loading-geral {
+	z-index: 9999;
+}
+
 /* ---- CONTEUDO PRINCIPAL ---- */
 
 main {

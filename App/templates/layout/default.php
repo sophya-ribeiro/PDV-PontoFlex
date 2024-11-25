@@ -56,6 +56,12 @@ function navItemAtivoOuInativo(string $nomeItem, string $currentRoute): string
 </head>
 
 <body class="bg-light">
+    <div id="loading-geral" class="d-none justify-content-center align-items-center position-fixed top-0 left-0 w-100 h-100 bg-dark opacity-50">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
+
     <header>
         <div>
             <img src="/img/logo-retang.png" class="img-logo">

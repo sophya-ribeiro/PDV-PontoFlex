@@ -26,6 +26,17 @@ function hideToasts() {
 	});
 }
 
+function verificarSubmissaoDeFormularios() {
+	const forms = document.querySelectorAll("form");
+
+	forms.forEach((form) => {
+		form.addEventListener("submit", () => {
+			document.querySelector("#loading-geral").classList.remove("d-none");
+			document.querySelector("#loading-geral").classList.add("d-flex");
+		});
+	});
+}
+
 function brlStringToFloat(brlString) {
 	return parseFloat(brlString.replace("R$", "").trim().replaceAll(".", "").replace(",", "."));
 }
@@ -44,4 +55,5 @@ window.onload = () => {
 	openModalWithHash();
 
 	hideToasts();
+	verificarSubmissaoDeFormularios();
 };
