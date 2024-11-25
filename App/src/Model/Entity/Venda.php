@@ -50,4 +50,6 @@ class Venda extends Entity
         'debito' => 'Cartão | Débito',
         'credito' => 'Cartão | Crédito',
     ];
+
+    public const TEMPO_LIMITE_REGISTRAR_VENDA = 15;
 }

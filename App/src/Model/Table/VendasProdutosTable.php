@@ -112,9 +112,17 @@ class VendasProdutosTable extends Table
         $connection->begin();
 
         try {
+            pcntl_signal(SIGALRM, function () {
+                throw new \Exception("Falha na conexão: tempo limite para venda atingido.");
+            });
+
+            pcntl_alarm(Venda::TEMPO_LIMITE_REGISTRAR_VENDA);
+
             $vendaProdutoEntities = [];
 
             foreach ($produtosVenda as $produtoVenda) {
+                pcntl_signal_dispatch();
+
                 $produto = $this->Produtos->get($produtoVenda['id']);
 
                 $vendaProdutoEntities[] = $this->newEntity([
@@ -128,7 +136,7 @@ class VendasProdutosTable extends Table
                 $produto->quantidade_estoque -= $produtoVenda['quantidade'];
 
                 if (!$this->Produtos->save($produto)) {
-                    throw new \Exception("Erro ao atualizar o estoque do produto: {$produto->id}");
+                    throw new \Exception("Erro ao atualizar o estoque do produto.");
                 }
             }
 
@@ -136,13 +144,19 @@ class VendasProdutosTable extends Table
                 throw new \Exception("Erro ao salvar os produtos da venda.");
             }
 
+            pcntl_signal_dispatch();
+
             $connection->commit();
+
+            pcntl_alarm(0);
 
             return true;
         } catch (\Exception $e) {
             $connection->rollback();
 
             $this->Vendas->delete($venda);
+
+            pcntl_alarm(0);
 
             throw $e;
         }
