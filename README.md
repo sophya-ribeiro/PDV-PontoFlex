@@ -21,7 +21,7 @@
 3. Acesse o container do app
 
     ```sh
-    docker exec -it pontoflex-dev-1 bash
+    docker exec --user application -it pontoflex-dev-1 bash
     ```
 
 4. Instale as dependências
