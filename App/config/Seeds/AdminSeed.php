@@ -32,10 +32,10 @@ class AdminSeed extends AbstractSeed
         $data = [
             [
                 'cpf' =>  '11122233344',
-                'nome_completo' => 'Gerente Admin',
+                'nome_completo' => 'Sophya Ribeiro',
                 'data_nascimento' => '2000-01-01',
                 'data_contratacao' => '2024-01-01',
-                'nome_usuario' => 'admin',
+                'nome_usuario' => 'sophya_ribeiro',
                 'senha' => '$2y$10$nBrer.N7eTX00OZyepU0H.sYC9gFZ/mOsgIvj/uzjfruhxbbseHkK', // padrão: admin123 -> deve ser alterada
                 'papel_id' => Papel::GERENTE
             ]
